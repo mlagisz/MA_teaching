@@ -13,7 +13,7 @@ knitr::opts_chunk$set(eval = TRUE, echo = TRUE, warning = FALSE)
 # EXERCISES - PHYLOGENETIC TREES FOR META-ANALYSIS
 
 Prepared by Malgorzata (Losia) Lagisz, BEES, UNSW, AU, losialagisz@yahoo.com.  
-Last updated: 1 June 2016 by Losia Lagisz
+
   
 Introduction
 -------
