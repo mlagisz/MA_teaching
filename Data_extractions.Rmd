@@ -1,0 +1,37 @@
+---
+title: "Data_extractions"
+author: "ML"
+date: "10 January 2019"
+output: html_document
+---
+
+
+```{r setup, cache = F, echo=FALSE}
+knitr::opts_chunk$set(error = TRUE) #allow some execution errors for demonstration purposes
+knitr::opts_chunk$set(eval = TRUE, echo = TRUE, warning = FALSE)
+```
+
+# EXERCISES - PHYLOGENETIC TREES FOR META-ANALYSIS 
+
+Prepared by Malgorzata (Losia) Lagisz, BEES, UNSW, AU, losialagisz@yahoo.com.   
+
+  
+Introduction  
+-------
+
+
+
+**TO DO**:  
+
+Prepare a set of 3 DAH papers to be extracted using *metaDigitise* package
+See: https://github.com/daniel1noble/metaDigitise (link to the paper?)
+
+USE ES_calculator to calculate ES?
+
+
+Start from installing (as required) and loading R packages.   
+
+```{r prepare, message = FALSE}
+#install.packages("devtools","fulltxt","ape","metafor")
+
+```
