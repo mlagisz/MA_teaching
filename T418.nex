@@ -1,0 +1,72 @@
+#NEXUS
+
+[!This data set was downloaded from TreeBASE, a relational database of phylogenetic knowledge. TreeBASE has been supported by the NSF, Harvard University, Yale University, SDSC and UC Davis. Please do not remove this acknowledgment from the Nexus file.
+
+
+Generated on January 16, 2019; 1:30 GMT
+
+TreeBASE (cc) 1994-2008
+
+Study reference:
+Ackerly D., & Donoghue M.J. 1998. Leaf size, sapling allometry, and Corner's rules:
+phylogeny and correlated evolution in maples (Acer). American Naturalist, 152:
+767-791.
+
+TreeBASE Study URI:  http://purl.org/phylo/treebase/phylows/study/TB2:S342]
+
+BEGIN TAXA;
+        TITLE  TaxonLabelSet9768;
+        DIMENSIONS NTAX=41;
+        TAXLABELS
+            Acer_amoenum
+            Acer_buergerianum
+            Acer_buergerianum_2
+            Acer_campestre
+            Acer_carpinifolium
+            Acer_circinatum
+            Acer_crataegifolium
+            Acer_diabolicum
+            Acer_distylum
+            Acer_ginnala
+            Acer_ginnala_2
+            Acer_glabrum
+            Acer_japonicum_1
+            Acer_japonicum_2
+            Acer_macrophyllum
+            Acer_micranthum
+            Acer_mono_1
+            Acer_mono_2
+            Acer_negundo
+            Acer_nipponicum
+            Acer_oblongum
+            Acer_okamotoanum
+            Acer_palmatum
+            Acer_pensylvanicum
+            Acer_platanoides
+            Acer_platanoides_2
+            Acer_pseudosieboldianum
+            Acer_rubrum
+            Acer_rufinerve
+            Acer_saccharinum
+            Acer_saccharum
+            Acer_shirasawanum
+            Acer_sieboldianum
+            Acer_spicatum
+            Acer_spicatum_2
+            Acer_takesimense
+            Acer_tegmentosum
+            Acer_tenuifolium
+            Acer_truncatum
+            Acer_tschonoskii
+            Dipteronia_sinensis
+            ;
+END;
+
+BEGIN TREES;
+      TITLE Tb5119;
+      LINK TAXA = TaxonLabelSet9768;
+      TREE Fig._2 = [&R] (Dipteronia_sinensis,((Acer_circinatum,((Acer_takesimense,(Acer_japonicum_2,Acer_pseudosieboldianum)),(Acer_oblongum,((Acer_palmatum,Acer_amoenum),(Acer_sieboldianum,(Acer_shirasawanum,Acer_tenuifolium),Acer_japonicum_1)))))Palmata,((Acer_buergerianum,(Acer_carpinifolium,(Acer_saccharum,(Acer_rubrum,Acer_saccharinum)Rubra))),(Acer_diabolicum,((Acer_macrophyllum,(Acer_campestre,(Acer_mono_1,(Acer_okamotoanum,((Acer_truncatum,Acer_mono_2),Acer_platanoides))))Platanoidea),((Acer_tschonoskii,Acer_micranthum)Micrantha,(((Acer_tegmentosum,Acer_rufinerve),(Acer_crataegifolium,Acer_pensylvanicum))Tegmentosa,((Acer_glabrum,(Acer_negundo,Acer_spicatum)),(Acer_nipponicum,(Acer_distylum,Acer_ginnala)))))Macrantha))))Acer);
+[!  TreeBASE tree URI: http://purl.org/phylo/treebase/phylows/tree/TB2:Tr418]
+
+
+END;
