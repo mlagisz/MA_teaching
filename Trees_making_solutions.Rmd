@@ -102,11 +102,13 @@ Quercus_treebase <- search_treebase(Quercus3sp_string, by=c("taxon","taxon","tax
 t(data.frame(matrix(unlist(Quercus_treebase), nrow=6, byrow=F), row.names = c("S.id", "Tr.id", "type", "kind", "quality", "ntax"))) #note the study IDs that you are using - you can find these on Treebase
 Quercuss_tree <- search_treebase("113123", by="id.tree", exact_match = TRUE) #returns a single tree in a list 
 Quercuss_tree <- Quercuss_tree[[1]] #extract tree from the list
-plot(Quercuss_tree, cex=.8, label.offset =.1, no.margin = TRUE) #big tree of all sorts of trees - needs good trimming!
+#if Treebase does not work use: Quercuss_tree <- read.nexus(file = "T113123.nex") #read Nexus tree file
+
+# plot(Quercuss_tree, cex=.8, label.offset =.1, no.margin = TRUE) #a big tree of all sorts of trees - needs good trimming!
 Quercus3sp_tree <- drop.tip(Quercuss_tree, Quercuss_tree$tip.label[-match(Quercus3sp, Quercuss_tree$tip.label)])
 plot(Quercus3sp_tree, cex=.8, label.offset =.1, no.margin = TRUE)
 
-###check the overlap between species name from the data fila nad the tree file
+#check the overlap between species name from the data fila nad the tree file
 intersect(as.character(Quercus3sp_tree$tip.label), Quercus3sp) # all matching, but we changed the species name in teh list, so it will no longer match the original dataset
 Quercus3sp_tree$tip.label <- gsub("montana", "prinus", Quercus3sp_tree$tip.label) #replace the tip label back with our species name
 Quercus3sp_tree$tip.label <- gsub("_"," ", Quercus3sp_tree$tip.label) #get rid of the underscores
