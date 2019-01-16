@@ -1,0 +1,116 @@
+---
+title: "Trees_making_solutions"
+author: "ML"
+date: "1/16/2019"
+output: html_document
+---
+
+
+```{r prepare, message = FALSE, echo = FALSE, eval = TRUE, warning = FALSE}
+knitr::opts_chunk$set(error = TRUE) #allow some execution errors for demonstration purposes
+knitr::opts_chunk$set(eval = TRUE, echo = TRUE, warning = FALSE) # install.packages("diagram")
+# install.packages("tidyverse")
+# install.packages("ape")
+# install.packages("curl")
+# install.packages("fulltext")
+# install.packages("treebase")
+# install.packages("devtools")
+# devtools::install_github("ropensci/rotl", dependencies = TRUE, build_vignette=TRUE)
+# install.packages("rotl")
+library(diagram, tidyverse)
+library(ape, curl)
+library(fulltext, metafor)
+library(treebase, devtools)
+library(rotl)
+```
+
+********************************************************************************
+
+
+### EXAMPLE 5 - try it yourself - rotl
+
+
+Use *rotl* to create a tree for the bunch of reptiles.   
+**Remember**: Make sure that species names match exactly tree tip labels   
+
+
+```{r rotl solution, echo = TRUE, eval = TRUE, warning = FALSE}
+myspecies2 <- c("Gekko japonicus", "Geochelone sulcata", "Gopherus agassizii", "Gopherus polyphemus", "Graptemys ouachitensis", "Graptemys pseudogeographica", "Hemidactylus bowringii", "Heterodon platirhinos", "Heteronotia binoei", "Iberolacerta cyeni", "Lacerta schreiberi", "Lampropholis delicata", "Lampropholis guichenoti", "Liasis fuscus")
+
+taxa2 <- tnrs_match_names(names = myspecies2)
+taxa2 #visual check
+
+tree2 <- tol_induced_subtree(ott_ids= taxa2[["ott_id"]], label_format = "name") #dont worry about the Warning message
+plot(tree2, cex=.8, label.offset =.1, no.margin = TRUE)
+tree2$tip.label <- gsub("_"," ", tree2$tip.label) #get rid of underscores
+# tree2$tip.label
+#tree$node.label <- NULL #delete node labels
+
+#check if the tree2 is really binary 
+is.binary.tree(tree2) #TRUE (i.e. there are no polytomies)
+
+#check the overlap between species name from the list nad the tree2 
+intersect(as.character(tree2$tip.label), myspecies2) #12 matching names
+setdiff(myspecies2, as.character(tree2$tip.label)) #2 mismatches - these are only in myspecies2
+setdiff(as.character(tree2$tip.label), myspecies2) #2 mismatches - these are only in the tree2$tip.label
+
+#rename the tip labels on the tree to match the species names from our list
+tree2$tip.label <- gsub("Centrochelys sulcata", "Geochelone sulcata", tree2$tip.label) 
+tree2$tip.label <- gsub("Iberolacerta cyreni", "Iberolacerta cyeni", tree2$tip.label) 
+#Note: you should actually check which name from each pair is "more correct" and accordingly check the names either on the tree or in your species list / data set
+
+#re-check the overlap between species name from the list nad the tree2 
+intersect(as.character(tree2$tip.label), myspecies2) #14 matching names
+setdiff(myspecies2, as.character(tree2$tip.label)) #0 mismatches
+setdiff(as.character(tree2$tip.label), myspecies2) #0 mismatches
+```
+Done!
+
+
+
+********************************************************************************
+
+
+### EXAMPLE 6 - try it yourself- treebase
+
+
+
+Use *treebase* to create a tree for the three Quercus species from dat.Curtis1998. 
+
+**Hint**: Quercus prinus is also called Quercus montana (https://en.wikipedia.org/wiki/Quercus_montana).   
+Once you substitute, all three species can be found on Tree 113123 of Study 22057, and also in several other studies and trees
+
+```{r treebase solution, echo = TRUE, eval = TRUE, warning = FALSE}
+#Code you need intially to get a list of species from Curtis 1998, in case you did not run Example 3:
+dat <- metafor::dat.curtis1998
+species_Curtis1998 <- paste(dat$genus, dat$species, sep=" ") 
+species_Curtis1998 <- unique(tolower(species_Curtis1998)) #make species name unique
+species_Curtis1998 <- gsub("populusx euramericana", "populus euramericana", species_Curtis1998) #merge 2 partially overlapping names (typo? or hybrid?) - remember to fix this in the main data set!
+species_Curtis1998 <- unique(tolower(species_Curtis1998)) #make the names unique again
+species_Curtis1998 <- paste(toupper(substr(species_Curtis1998, 1, 1)), substr(species_Curtis1998, 2, nchar(species_Curtis1998)), sep="") #capitalise first letters
+
+#extract three Quercus species names:
+Quercus3sp <- species_Curtis1998[grep("Quercus ", species_Curtis1998)]
+Quercus3sp #3 species
+Quercus3sp <- gsub(" ","_", Quercus3sp) #put underscores back in the names
+Quercus3sp <- gsub("prinus","montana", Quercus3sp) #change the name to its currentky used synonym
+
+Quercus3sp_string <- paste(Quercus3sp, sep = "", collapse = ' and ') 
+Quercus3sp_string #you should get "Quercus_rubrum and Quercus_saccharinum and Quercus_pensylvanicum and Quercus_saccharum"
+
+Quercus_treebase <- search_treebase(Quercus3sp_string, by=c("taxon","taxon","taxon"), max_trees=10, exact_match = TRUE, only_metadata = TRUE) #note different commas than in the treebase tutorial!
+t(data.frame(matrix(unlist(Quercus_treebase), nrow=6, byrow=F), row.names = c("S.id", "Tr.id", "type", "kind", "quality", "ntax"))) #note the study IDs that you are using - you can find these on Treebase
+Quercuss_tree <- search_treebase("113123", by="id.tree", exact_match = TRUE) #returns a single tree in a list 
+Quercuss_tree <- Quercuss_tree[[1]] #extract tree from the list
+plot(Quercuss_tree, cex=.8, label.offset =.1, no.margin = TRUE) #big tree of all sorts of trees - needs good trimming!
+Quercus3sp_tree <- drop.tip(Quercuss_tree, Quercuss_tree$tip.label[-match(Quercus3sp, Quercuss_tree$tip.label)])
+plot(Quercus3sp_tree, cex=.8, label.offset =.1, no.margin = TRUE)
+
+###check the overlap between species name from the data fila nad the tree file
+intersect(as.character(Quercus3sp_tree$tip.label), Quercus3sp) # all matching, but we changed the species name in teh list, so it will no longer match the original dataset
+Quercus3sp_tree$tip.label <- gsub("montana", "prinus", Quercus3sp_tree$tip.label) #replace the tip label back with our species name
+Quercus3sp_tree$tip.label <- gsub("_"," ", Quercus3sp_tree$tip.label) #get rid of the underscores
+plot(Quercus3sp_tree, cex=.8, label.offset =.1, no.margin = TRUE)
+```
+
+Done!
