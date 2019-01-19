@@ -9,29 +9,61 @@ output: html_document
 ```{r setup, cache = F, echo=FALSE}
 knitr::opts_chunk$set(error = TRUE) #allow some execution errors for demonstration purposes
 knitr::opts_chunk$set(eval = TRUE, echo = TRUE, warning = FALSE)
+sessionInfo()
 ```
 
 # EXERCISES - PHYLOGENETIC TREES FOR META-ANALYSIS 
 
-Prepared by Malgorzata (Losia) Lagisz, BEES, UNSW, AU, losialagisz@yahoo.com.   
+Prepared by Malgorzata (Losia) Lagisz, BEES, UNSW, AU, losialagisz@gmail.com.   
+
+### Purpose of the exercise:   
+In this exercise you get some practice and tips on:   
+ * Organising dataset  
+ * Extracting and coding
+ * Converting different types of information   
+ * Tidying up
 
   
-Introduction  
+
+## Introduction  
 -------
 
+Imagine, you decided to carry on your Terminal Investment Meta-analysis and you actually fnished searching and screening literature for relevant papers. You have a collection of around 30 include full-text papers stored neatly as pdf files and supplementary information in whatever format available.
 
+
+
+********************************************************************************
+###  Organising dataset  
+
+
+********************************************************************************
+###  Extracting and coding
 
 **TO DO**:  
-
 Prepare a set of 3 DAH papers to be extracted using *metaDigitise* package
 See: https://github.com/daniel1noble/metaDigitise (link to the paper?)
+Tools: metaDigitise
 
-USE ES_calculator to calculate ES?
+
+********************************************************************************
+###  Converting different types of information   
+
+**TO DO**:  
+ES_calculator to convert ES?
+
+********************************************************************************
+###  Tidying up
+
+
+
+
 
 
 Start from installing (as required) and loading R packages.   
 
 ```{r prepare, message = FALSE}
-#install.packages("devtools","fulltxt","ape","metafor")
-
+install.packages("devtools")
+devtools::install_github("daniel1noble/metaDigitise")
+#install.packages("metaDigitise")
+library(metaDigitise)
 ```
