@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, cache = F, echo=FALSE}
 knitr::opts_chunk$set(error = TRUE) #allow some execution errors for demonstration purposes
 knitr::opts_chunk$set(eval = TRUE, echo = TRUE, warning = FALSE)
+sessionInfo()
 ```
 
 # EXERCISES - PHYLOGENETIC TREES FOR META-ANALYSIS
