@@ -337,10 +337,10 @@ Scopus and Web of Science.
 **RESOURCES:** 
 Scopus: https://www.scopus.com/   
 Web of Science (WoS): http://apps.webofknowledge.com   
-**Note:** WoS coverage depends of institutional subscription package purchased, so results of searches can vary among institutions.  
+**Note:** WoS coverage depends of institutional subscription package purchased, so results of searches can vary among institutions. Also searching just core collection vs. all available databases can make a difference.     
 
 **TASK 5:**   
-Using Scopus **Advanced Search** run this search strings:  
+Using Scopus **Advanced Search** (you can read more about the syntax here: https://dev.elsevier.com/tips/ScopusSearchTips.htm) run this search strings:  
  1. *TITLE-ABS-KEY ( "terminal investment"  AND  "immune challenge" )*    
 (approx. 14 hits - search terms too restrictive)   
  2. *TITLE-ABS-KEY ( ( "terminal investment"  OR  "reproductive effort" )  AND  ( "immune challeng\*"  OR  "immunochalleng\*" ) )  *
@@ -350,17 +350,18 @@ Using Scopus **Advanced Search** run this search strings:
  4. *( TITLE-ABS-KEY ( ( "terminal investment"  OR  "reproductive effort" )  AND  ( "immune challeng\*"  OR  "immunochalleng\*"  OR  "infect\*" ) )  AND NOT  TITLE-ABS-KEY ( load  OR  human  OR  people ) )* 
 (approx. 144 hits - by adding a group of exclusion terms (AND NOT) we probably got rid of some irrelevant ones).  
 
-Ideally, we should think and test some more terms for inclusion, after doing some scoping searches, reading reviews and sentinel relevant empirical papers. We stop for now and assume that the string above is our final search string. Note that Scopus Advanced Search stores all your searches ans search strings in a neat table at the bottom of the search window - its easy to copy this out and include in the documentation on how you developed your search strategy (same applies to WoS database). The \* symbol stands for wildcard and indicates "any symbols" since these databases do not do Automatic Query Expansion.    
+Ideally, we should think and test some more terms for inclusion, after doing some scoping searches, reading reviews and sentinel relevant empirical papers. We stop for now and assume that the string above is our final search string. Note that Scopus Advanced Search stores all your searches ans search strings in a neat table at the bottom of the search window - its easy to copy this out and include in the documentation on how you developed your search strategy (same applies to WoS database; you need to register in Scopus and WoS to save searches and alerts across multiple search sessions). The \* symbol stands for wildcard and indicates "any symbols" since these databases do not do Automatic Query Expansion.    
 
 **TASK 6:**    
-We can easily translate our final search string from Scopus into Web of Science (WoS) **Advanced Search**. Run this search string:    
+We can easily translate our final search string from Scopus into Web of Science (WoS) **Advanced Search** (you can read more about the syntax here: https://images.webofknowledge.com/images/help/WOS/hs_search_operators.html). Run this search string:    
 *TS = (( ( "terminal investment" OR "reproductive effort" ) AND ( "immune challeng\*"  OR  "immunochalleng\*"  OR  "infect\*"  ) ) NOT ( load OR human OR people ) )*  
 (approx. 249 hits - more than from Scopus).   WoS stores your search history and also which sub-data bases were included in the search: Indexes=SCI-EXPANDED, SSCI, A&HCI, CPCI-S, CPCI-SSH, BKCI-S, BKCI-SSH, ESCI, CCR-EXPANDED, IC Timespan=All years" (you can restrict these in Advanced Search)
 
-Both Scopus and WoS allow exporting the found records (with limitations on the max. number per export, **remember to tick the boxes for exporting abstracts!**) - there are multiple file formats you can use, but .ris and .bib are most commonly used ones  - you will need to figure out which ones work for your reference manager software. The next step would be downloading all found records from your "final" search into reference manager of your choice. Combine the references from two databases into a single project/folder and removing duplicates (most reference managers have such function, but it never works perfectly - do a visual check after sorting by titles!) before proceeding to screening stage.  
+Both Scopus and WoS allow exporting the found records (with limitations on the max. number per export, **remember to tick the boxes for exporting abstracts!**) - there are multiple file formats you can use, but .ris and .bib are most commonly used ones- you will need to figure out which ones work for your reference manager software. The next step would be downloading all found records from your "final" search into reference manager of your choice. Combine the references from two databases into a single project/folder and removing duplicates (most reference managers have such function, but it never works perfectly - do a visual check after sorting by titles!) before proceeding to screening stage. An R package *revtools* (https://cran.rstudio.com/web/packages/revtools/ and http://revtools.net/) can act as a reference manager and also has a good de-dupiction function.      
 
 **Note:** It is also a good time to write up your meta-analysis protocol and preregistering your meta-analysis (e.g. on OSF)!
 <br>
+
 
 ********************************************************************************
 ###  Screening the literature   
@@ -375,7 +376,9 @@ Abstrackr:  http://abstrackr.cebm.brown.edu/account/login (another free tool)
 
 
 **TASK 7:**  
-We prepared a file (*Scopus10.ris*) with 10 references sampled from the set found using search string (these are sets of references from *( ( "terminal investment"  OR  "reproductive effort" )  AND  ( "immune challeng\*"  OR  "immunochalleng\*" ) )  *) in Scopus (same references came up in the equivalent search in WoS).   
+We prepared a file (*Scopus10.ris*) with 10 references sampled from the set found using search string (these are sets of references from *( ( "terminal investment"  OR  "reproductive effort" )  AND  ( "immune challeng\*"  OR  "immunochalleng\*" ) )  *) in Scopus (same references came up in the equivalent search in WoS).    
+
+**Note:** Sometimes the biblio-files with the same extension differ a bit in structure and reference managers (and Rayyan) may have problem opening them. Getting your files into exactly right format can sometimes be frustrating.   
 
 We will use these ten references to practice title and abstract screening in Rayyan. Screening can be also done in Abstracker, but we found Rayyan bit more reliable and more user-friendly.   
 If you are working in pairs or small groups, one person should create a new project in Rayyan (see below) and invite another person/people to the project using their email address.  
@@ -400,7 +403,7 @@ How many papers you excluded? How many conflicts you got if you collaboratively 
 We think 4 should have been excluded: Simmons2009 and Clancy 2013 as human studies, Gershman2010 and Gonzales-Tokman 2013 as not likely to have any reproduction-related measurements.   
 
 **TASK 8:**  
-Its time to do the full-text screening for the papers that passed title and abstract screening. There are some full-text papers that passed the initial screening in the directory - assess Nielsen2012 and Ardia2005 using our full-text screening decision tree.   
+Its time to do the full-text screening for the papers that passed title and abstract screening. There are some full-text papers that passed the initial screening in the directory - assess Nielsen2012 and Ardia2005 using our full-text screening decision tree. Hint: dont read the whole paper - just try to skim it and look for the key information.      
 
 **QUESTION 16:**  
 What was your decision about Nielsen2012 and Ardia2005 papers?   
@@ -480,6 +483,17 @@ How many papers in total were excluded during the full-text screening?
 
 **Note:** When you exclude records in the full-text screen keep record for each individual paper on the main reason for exclusion. Later present this information as a supplementary table for your meta-analyses. (Table of included studies should go in the main text, if possible).    
 
+**QUESTION 18:**  
+Above you can see a PRISMA (flow) diagram. The other important document(s) associated with PRISMA is a checklist (http://prisma-statement.org/documents/PRISMA%202009%20checklist.pdf). 
+PRISMA checklist is a document that helps making sure that you reported the key information how a systematic review (including meta-analysis) was done.    
+Have a look at the PRISMA checklist. Find and read the items that are related to what we have covered in this exercise. What are the numbers (in the # column) of these items?   
 
-*Can you think of any other good questions for this section?   *
+**Note:** this PRISMA was designed for meedical systematic reviews, and some items are not very relevant or useful. Also, it is due to be updated.   
+
+
+**ANSWER 18:**    
+Items: 3 to 9, 17   
+
+
+*We hope you enjoyed this exercise! Remeber, we just roughly covered the basics and there is much more to learn!*       
 
