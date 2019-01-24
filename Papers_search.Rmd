@@ -66,16 +66,9 @@ Generally, the more focused the question, the easier and quicker it is to perfor
 **QUESTION 0:**  
 What is your initial feeling about the meta-analytical question that can be derived from the text fragment cited above?   
 
-**ANSWER 0:**  
-The most general question would be "What is the evidence for terminal investment happening?"    
-But that is not a good question, because it is way too general.  
 
 **QUESTION 1:**  
 What are at least 2 ways of improving this initial question to make it more amenable for a meta-analysis?
-
-**ANSWER 1:**  
- 1. Note that the listed examples involve challenge to immune system - this is because experimental manipulation can give clearest answer to whether terminal investment can be happening. So, the more precise  question would be "whether immune challenge can result in terminal investment"
- 2. The examples given involve animals (birds), but plants and organisms from other kingdoms can also be used to answer such questions. However, they have quite different immune systems and life histories, so it might be a good idea to restrict the question to animals, or even to a specific animal taxon (birds or insects). Note that in plant research different terminology can be used, e.g. overcompensation (there is a meta-analysis just published in Ecology on overcompensation in response to herbivory: https://www.ncbi.nlm.nih.gov/pubmed/30554427 , and a few older ones).   
 
 These question refinements are leading us gently into deciding which studies to use in a meta-analysis. However, before we move onto inclusion criteria, it is wise to gather more intelligence (Unless you are already an expert on the topic).
 
@@ -87,9 +80,6 @@ What should we do now?
  d) Further refine the question.  
  e) All of the above.  
 
-**ANSWER 2:**  
-e) All of the above.   
-Doing some scoping searches and some more reading will help to get to know theoretical background, make predictions and get a feel of what sort of empirical papers are available, and order of magnitude of the number of available papers. These searches can reveal existing meta-analyses on the topic, key narrative reviews and empirical papers, all of these will help refining the question and deciding on the inclusion criteria for meta-analysis. We don't have time to do this all during this exercise, so we just do a quick scoping search for existing meta-analyses to familiarize you with Google Scholar:
 
 **TASK 1:**  
 Are there any meta-analyses (or similar) on terminal investment in animals?   (you can skip the following few tasks if short of time during the exercise)   
@@ -133,12 +123,6 @@ PICO stands for:
 
 Formulate meta-analytic question "whether immune challenge can result in terminal investment" using PICO terms (actually this fits really well because we can use experimental data).   
 
-**ANSWER 3:**   
-  * P = Population                = animal species   
-  * I = Intervention              = immune challenge   
-  * C = Comparison/Control group  = unchallenged group of animals, otherwise in the same state   
-  * O = Outcome                   = reproduction-related traits   
-(further restrictions for all of these can be added here or later at the criteria stage - we will add them later)   
 
 **RESOURCES:**   
 An extensive list of alternative systematic review formulation question frameworks here:  https://www.networks.nhs.uk/nhs-networks/nwas-library-and-information-service/documents/alternative-question-structures-for-different-types-of-systematic-review    )
@@ -158,47 +142,28 @@ Most importantly, you always need to be able to justify your inclusion criteria!
 **QUESTION 4:**  
 Time-span: should we include studies from any year?  
 
-**ANSWER 4:**   
-Probably yes, unless you can come up with a reason for not doing so.  
-
 **QUESTION 5:**  
 Language: should we include studies published in any language?  
 
-**ANSWER 5:**   
-Most meta-analyses only include studies published in English by default. However, if possible it is recommend to include studies also in other languages (usually not many are found, unless you also perform your searches in other languages). 
 **Note:** publication status can be also used as a criterium - are you happy to include some types of grey literature (e.g. conference proceedings, theses)?
 
 **QUESTION 6:**  
 Study type: should we include any type of study?  
 
-**ANSWER 6:**   
-Since we investigate a specific intervention, we should restrict study type to experimental (we should explicitly exclude simulation or experimental studies kind of matching our question).  
-
 **QUESTION 7:**  
 Taxa: should we include any type of taxa?   
-**ANSWER 7:**   
-That is a difficult one. Animal kingdom is vast and diverse, and some species are especially odd (e.g. humans). Does it make sense to include single-cell animals? Does it make sense to include humans? Probably not.
-How about multicellular animals, except humans? If many studies across multiple taxa exist, we could focus on the most frequently studied taxa or biologically most interesting. Alternatively just vertebrates, except humans? Another thing worth being specific about is that the animals should be wild-type (non-mutant, not disease models) and ideally not subject to any other significant manipulations that could affect their response (e.g. drug treatment; note there is a thin fuzzy line what these manipulations are). There might also be reasons to exclude standard laboratory species (mice, rat, yeast, fruit fly) or maybe focus just on them? But, for now, we will stick to any multicellular animals, except humans.  
 
 **QUESTION 8:**   
 Manipulation type: should we include any immune challenge?   
-**ANSWER 8:**   
-There are several established types of experimental immune challenge (blood cells (e.g. SRBC), protein (e.g. PHA), dead or live pathogens or parasites), so its worth including these and similar ones. Non-experimental immune challenge (e.g. natural infestation levels)  should not be included. If something odd comes up later it can come under "exclusion criteria", with justification.   
 
 **QUESTION 9:**   
 Control group: should we accept any type of control group?  
-**ANSWER 9:**   
-Control group (unmanipulated) should consist of similar individuals, as far as reasonable and not be subject to any other manipulations.  
 
 **QUESTION 10:**   
 Outcome type: should we accept any reproduction-related measurements and what that means?   
-**ANSWER 10:**    
-What is reproduction-related trait will depend on the species studied (may require additional reading or relying on the assertions of the authors). Different taxa will have different suites of reproduction related-traits, but these can be grouped into broader categories (e.g. mate attraction includes vocal signals, visual ornaments, pheromone production etc.; reproductive fitness will include number and quality of offspring) and different specific measurements will be available for different taxa and in different studies - this can be quite messy. If we do not have many studies on the topic and very specific question (e.g. "is the number of offspring affected?"") it is OK to be inclusive and later on try to figure out whether some traits are affected more than others.  
 
 **QUESTION 11:**  
 Data type: should we accept any type of data for meta-analysis?   
-**ANSWER 11:**   
-It depends on the effect size we are planning to use. In our project it can be Cohen's d (Hedges g) or lnRR, which are typically calculated from mean, SD or SE and N (sample sizes). However, they can be also inferred from some of the test statistics, or even proportions, if means and other descriptive statistics are not available. Other considerations include what to do if some data is missing or unclear.   
 <br>
 
 
@@ -210,18 +175,11 @@ Briefly, if the initial (most general) questions, representing screening criteri
 
 **QUESTION 12:**  
 How many stages there are during literature screening process?   
-**ANSWER 12:**   
-The screening of literature is usually done in two stages:   
- 1. abstract +  title + keywords  
- 2. full text + supplementary information  
 
 **QUESTION 13:**  
 How many decision trees do we need, and why, for the literature screening process?   
-**ANSWER 13:**    
-We need two decision trees! (one for each stage).  
-This is because abstracts, titles and keywords do not contain enough information to conclusively answer all of the inclusion criteria questions - you should be excluding every paper for which you cannot answer "yes"" to all the questions. Thus this first stage of screening hes to be more tentative, and we would use a more permissive and simpler decision tree. A good tree starts from the questions that are easiest to answer (if we had any year or language restrictions we would put these on the top). Note that during abstract screening we exclude the records where definite "no" can be inferred from available information, but we allow for some uncertainty for the "yes" answers by allowing "probably" as an acceptable answer for inclusion, so we can check for more info in the full text.
 
-Example decision tree for abstract screening:  
+An example decision tree for abstract screening:  
 
 ```{r diagram decision tree abstracts, fig.width=10, fig.height=6, echo=FALSE, message=FALSE}
 par(mar=c(1,1,1,1))
@@ -264,12 +222,9 @@ text(arrpos[8, 1] + 0.07, arrpos[8, 2] + 0.03, "yes/probably")
 **QUESTION 14:**  
 Why in the abstract screening decision tree there is no question about the type of data used to express measurements reported in the study?   
 
-**ANSWER 14:**  
-Most likely this will not be reported in the abstract, or only the measurements that were found to be significant will be mentioned This question needs to be answered during the full-text screening phase.  
-
 Full-text screening is more strict and we want to have answers to all our inclusion criteria. In principle we only have "yes" and "no" answers to the screening questions. However, in practice, if a study looks very relevant but some information is ambiguous or missing, you may decide to contact the authors to get some extra information or data. in such case, you can provisionary include such papers and make final decision once you get, or not, the replies.   
 
-Example decision tree for full-text screening:    
+An example decision tree for full-text screening:    
 
 ```{r diagram decision tree fulltexts, fig.width=10, fig.height=6, echo=FALSE, message=FALSE}
 par(mar=c(1,1,1,1))
@@ -318,11 +273,6 @@ text(arrpos[10, 1] + 0.05, arrpos[10, 2] + 0.03, "yes")
 **QUESTION 15:**  
 What question is missing on the top of the full-text decision tree?   
 (Tip: its not about the Language or publication year)   
-
-**ANSWER 15:**    
-The question is "Is the full text of this study available for our assessment?"   
-It is often not explicitly stated, but without the full text it is impossible to extract all the necessary information about the study and the data. 
-It is a good practice to keep this in mind and use as one of your potential inclusion/exclusion critera.   
 <br>
 
      
@@ -396,20 +346,16 @@ In the left panels there are several sub-panels.
  9. Using pour abstract screening decision tree decide whether include this paper for the next stage of screening and press "Include" or "Exclude" button accordingly. And do the assessment for the remaining records. As you go you can create and assign new labels to individual records, e.g.: "unsure/check". You could also enter reasons for exclusion, e.g. "human" (we normally don't do this as there are often hundreds or thousands excluded records per project at this stage).  
 10. Go to "All reviews" and check if other people finished their screening, if applicable. After that you can lift the "blind" mode, export all the records with decisions into a .csv files. For collaborative screens Rayyan will now provide filters to display all consensus included, consensus excluded and records with conflicting decisions. If you have any "conflicts" have a look again and discuss why you couldn't agree on a given record , come to agreement and make final decision. Export the records with final consensus decisions, for documentation.   
 
-**QUESTION 15:** 
+
+**QUESTION 16:** 
 How many papers you excluded? How many conflicts you got if you collaboratively screened (and if so what was causing these conflicts, can the decision tree be improved?)
 
-**ANSWER 15:**   
-We think 4 should have been excluded: Simmons2009 and Clancy 2013 as human studies, Gershman2010 and Gonzales-Tokman 2013 as not likely to have any reproduction-related measurements.   
 
 **TASK 8:**  
 Its time to do the full-text screening for the papers that passed title and abstract screening. There are some full-text papers that passed the initial screening in the directory - assess Nielsen2012 and Ardia2005 using our full-text screening decision tree. Hint: dont read the whole paper - just try to skim it and look for the key information.      
 
-**QUESTION 16:**  
+**QUESTION 17:**  
 What was your decision about Nielsen2012 and Ardia2005 papers?   
-
-**ANSWER 16:**    
-Nielsen2012 - include, Ardia2005 - exclude due to the lack of good control group.  
 <br>
 
 
@@ -475,24 +421,19 @@ text(elpos[30, 1] + 0, elpos[30, 2] - 0.02, "4")
 <br>
 
 
-**QUESTION 17:**   
+**QUESTION 18:**   
 How many papers in total were excluded during the full-text screening?   
 
-**ANSWER 17:**    
-15+6 = 21   
 
 **Note:** When you exclude records in the full-text screen keep record for each individual paper on the main reason for exclusion. Later present this information as a supplementary table for your meta-analyses. (Table of included studies should go in the main text, if possible).    
 
-**QUESTION 18:**  
+**QUESTION 19:**  
 Above you can see a PRISMA (flow) diagram. The other important document(s) associated with PRISMA is a checklist (http://prisma-statement.org/documents/PRISMA%202009%20checklist.pdf). 
 PRISMA checklist is a document that helps making sure that you reported the key information how a systematic review (including meta-analysis) was done.    
 Have a look at the PRISMA checklist. Find and read the items that are related to what we have covered in this exercise. What are the numbers (in the # column) of these items?   
 
 **Note:** this PRISMA was designed for meedical systematic reviews, and some items are not very relevant or useful. Also, it is due to be updated.   
-
-
-**ANSWER 18:**    
-Items: 3 to 9, 17   
+<br>
 
 
 *We hope you enjoyed this exercise! Remeber, we just roughly covered the basics and there is much more to learn!*       
