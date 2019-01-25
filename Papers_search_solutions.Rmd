@@ -1,0 +1,109 @@
+---
+title: "Papers_search_solutions"
+author: "ML"
+date: "1/23/2019"
+output: html_document
+---
+
+
+```{r setup, cache = F, echo=FALSE, results = FALSE}
+knitr::opts_chunk$set(error = TRUE) #allow some execution errors for demonstration purposes
+knitr::opts_chunk$set(eval = TRUE, echo = TRUE, warning = FALSE, collapse = TRUE, comment = "#>")
+sessionInfo()
+```
+
+
+# EXERCISES - SEARCHING AND SCREENING PAPERS FOR META-ANALYSIS  - SOLUTIONS
+
+Prepared by Malgorzata (Losia) Lagisz, BEES, UNSW, AU, losialagisz@gmail.com.   
+
+<br>
+
+  
+********************************************************************************  
+### Introduction   
+
+**ANSWER 0:**  
+The most general question would be "What is the evidence for terminal investment happening?"    
+But that is not a good question, because it is way too general.  
+
+**ANSWER 1:**  
+ 1. Note that the listed examples involve challenge to immune system - this is because experimental manipulation can give clearest answer to whether terminal investment can be happening. So, the more precise  question would be "whether immune challenge can result in terminal investment"
+ 2. The examples given involve animals (birds), but plants and organisms from other kingdoms can also be used to answer such questions. However, they have quite different immune systems and life histories, so it might be a good idea to restrict the question to animals, or even to a specific animal taxon (birds or insects). Note that in plant research different terminology can be used, e.g. overcompensation (there is a meta-analysis just published in Ecology on overcompensation in response to herbivory: https://www.ncbi.nlm.nih.gov/pubmed/30554427 , and a few older ones).   
+
+**ANSWER 2:**  
+e) All of the above.   
+Doing some scoping searches and some more reading will help to get to know theoretical background, make predictions and get a feel of what sort of empirical papers are available, and order of magnitude of the number of available papers. These searches can reveal existing meta-analyses on the topic, key narrative reviews and empirical papers, all of these will help refining the question and deciding on the inclusion criteria for meta-analysis. We don't have time to do this all during this exercise, so we just do a quick scoping search for existing meta-analyses to familiarize you with Google Scholar:
+
+**ANSWER 3:**   
+  * P = Population                = animal species   
+  * I = Intervention              = immune challenge   
+  * C = Comparison/Control group  = unchallenged group of animals, otherwise in the same state   
+  * O = Outcome                   = reproduction-related traits   
+(further restrictions for all of these can be added here or later at the criteria stage - we will add them later)   
+
+**ANSWER 4:**   
+Probably yes, unless you can come up with a reason for not doing so.  
+
+
+**ANSWER 5:**   
+Most meta-analyses only include studies published in English by default. However, if possible it is recommend to include studies also in other languages (usually not many are found, unless you also perform your searches in other languages). 
+
+
+**ANSWER 6:**   
+Since we investigate a specific intervention, we should restrict study type to experimental (we should explicitly exclude simulation or experimental studies kind of matching our question).  
+
+
+**ANSWER 7:**   
+That is a difficult one. Animal kingdom is vast and diverse, and some species are especially odd (e.g. humans). Does it make sense to include single-cell animals? Does it make sense to include humans? Probably not.
+How about multicellular animals, except humans? If many studies across multiple taxa exist, we could focus on the most frequently studied taxa or biologically most interesting. Alternatively just vertebrates, except humans? Another thing worth being specific about is that the animals should be wild-type (non-mutant, not disease models) and ideally not subject to any other significant manipulations that could affect their response (e.g. drug treatment; note there is a thin fuzzy line what these manipulations are). There might also be reasons to exclude standard laboratory species (mice, rat, yeast, fruit fly) or maybe focus just on them? But, for now, we will stick to any multicellular animals, except humans.  
+
+
+**ANSWER 8:**   
+There are several established types of experimental immune challenge (blood cells (e.g. SRBC), protein (e.g. PHA), dead or live pathogens or parasites), so its worth including these and similar ones. Non-experimental immune challenge (e.g. natural infestation levels)  should not be included. If something odd comes up later it can come under "exclusion criteria", with justification.   
+
+
+**ANSWER 9:**   
+Control group (unmanipulated) should consist of similar individuals, as far as reasonable and not be subject to any other manipulations.  
+
+
+**ANSWER 10:**    
+What is reproduction-related trait will depend on the species studied (may require additional reading or relying on the assertions of the authors). Different taxa will have different suites of reproduction related-traits, but these can be grouped into broader categories (e.g. mate attraction includes vocal signals, visual ornaments, pheromone production etc.; reproductive fitness will include number and quality of offspring) and different specific measurements will be available for different taxa and in different studies - this can be quite messy. If we do not have many studies on the topic and very specific question (e.g. "is the number of offspring affected?"") it is OK to be inclusive and later on try to figure out whether some traits are affected more than others.  
+
+**ANSWER 11:**   
+It depends on the effect size we are planning to use. In our project it can be Cohen's d (Hedges g) or lnRR, which are typically calculated from mean, SD or SE and N (sample sizes). However, they can be also inferred from some of the test statistics, or even proportions, if means and other descriptive statistics are not available. Other considerations include what to do if some data is missing or unclear.   
+
+**ANSWER 12:**   
+The screening of literature is usually done in two stages:   
+ 1. abstract +  title + keywords  
+ 2. full text + supplementary information  
+
+**ANSWER 13:**    
+We need two decision trees! (one for each stage).  
+This is because abstracts, titles and keywords do not contain enough information to conclusively answer all of the inclusion criteria questions - you should be excluding every paper for which you cannot answer "yes"" to all the questions. Thus this first stage of screening hes to be more tentative, and we would use a more permissive and simpler decision tree. A good tree starts from the questions that are easiest to answer (if we had any year or language restrictions we would put these on the top). Note that during abstract screening we exclude the records where definite "no" can be inferred from available information, but we allow for some uncertainty for the "yes" answers by allowing "probably" as an acceptable answer for inclusion, so we can check for more info in the full text.
+
+**ANSWER 14:**  
+Most likely this will not be reported in the abstract, or only the measurements that were found to be significant will be mentioned This question needs to be answered during the full-text screening phase.  
+
+**ANSWER 15:**    
+The question is "Is the full text of this study available for our assessment?"   
+It is often not explicitly stated, but without the full text it is impossible to extract all the necessary information about the study and the data. 
+It is a good practice to keep this in mind and use as one of your potential inclusion/exclusion critera.   
+
+**ANSWER 16:**   
+We think 4 should have been excluded: Simmons2009 and Clancy 2013 as human studies, Gershman2010 and Gonzales-Tokman 2013 as not likely to have any reproduction-related measurements.   
+
+**ANSWER 17:**    
+Nielsen2012 - include, Ardia2005 - exclude due to the lack of good control group.  
+
+**ANSWER 18:**    
+15 + 6 = 21   (from the PRISMA diagram)
+
+**ANSWER 19:**    
+Items: 3 to 9, 17   
+
+
+<br>
+
+
+*We hope it all makes sense - if not sure about some answers, please talk to us*       
