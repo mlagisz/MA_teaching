@@ -373,7 +373,7 @@ tree$tip.label <- gsub("Fuscospora fusca", "Nothofagus fusca", tree$tip.label) #
 setdiff(species_Curtis1998, as.character(tree$tip.label)) #0 mismatches 
 setdiff(as.character(tree$tip.label), species_Curtis1998) #0 mismatches
 
-# write.tree(tree, file="tree_curtis1998.tre") #save the tree in Newick format, if needed
+write.tree(tree, file="tree_curtis1998.tre") #save the tree in Newick format, if needed
 # read.tree(file="tree_curtis1998.tre") #if you need to read it
 ```
 
