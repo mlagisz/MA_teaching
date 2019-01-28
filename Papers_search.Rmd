@@ -24,6 +24,9 @@ library(diagram)
 
 Prepared by Malgorzata (Losia) Lagisz, BEES, UNSW, AU, losialagisz@gmail.com.   
 
+**Setup:** Work in pairs or small groups. R/Rstudio and Internet connection needed.   
+
+
 ### Purpose of the exercise:   
 In this exercise you get some practice and tips on:   
   
