@@ -382,6 +382,8 @@ Check if our tree is binary (you can see in the plot that there are a few polyto
 ```{r check Curtis1998 tree binary}
 is.binary.tree(tree) #FALSE (i.e. there are polytomies)
 # is.ultrametric(tree) #the tree has no branch lengths, so cant be checked
+write.tree(tree, file="tree_curtis1998.tre") #save the tree
+# tree <- read.tree(file="tree_curtis1998.tre") #if you need to read it
 ```
 
 Its not binary -  polytomies are present within genera: Acer, Betula, Quercus and Fraxinus.
@@ -392,7 +394,7 @@ set.seed(111) #making it replicable
 tree_random <- multi2di(tree,random=TRUE)
 is.binary.tree(tree_random) #TRUE
 write.tree(tree_random, file="tree_curtis1998_random.tre") #save the tree
-# read.tree(file="tree_curtis1998_random.tre") #if you need to read it
+# tree_random <- read.tree(file="tree_curtis1998_random.tre") #if you need to read it
 ```
 
 Plot the tree now - with randomly resolved polytomies.   
@@ -496,7 +498,7 @@ is.binary.tree(Acers4sp_tree) #TRUE
 We can graft this tree on the Curtis1998 tree to non-randomly resolve polytomy for genus Acer.   
 **Note:** when grafting you lose branch lengths on the original tree, if present.   
 
-We first need to prune given branch to remove all but one species affected by polytomy. Then we can replace this species with the resolved sub-tree (Acers4sp_tree):   
+We first need to prune given branch from the main tree to remove all but one species affected by polytomy. Then we can replace this species with the resolved sub-tree (Acers4sp_tree):   
 
 ```{r graft Acers_tree}
 tree_pruned <- drop.tip(tree, c("Acer saccharum", "Acer rubrum", "Acer saccharinum")) #prune 3 species
