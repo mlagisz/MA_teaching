@@ -15,7 +15,9 @@ sessionInfo()
 
 Prepared by Malgorzata (Losia) Lagisz, BEES, UNSW, AU, losialagisz@gmail.com  
 
-  
+**Setup:** Work can be done individually, in pairs or small groups. R/Rstudio and Internet connection needed.   
+
+
 Introduction
 -------
 
@@ -26,18 +28,53 @@ To create a relatedness matrix among species we need a phylogenetic tree for the
 
 A few things to note:  
 1. We can use a tree with or without branch lengths (divergence measures).  
-2. The tree has to be binary (strictly bifurcating = no polytomies, i.e. only two branches are coming from each node).  
+
+```{r tree exmaple1, eval=TRUE, echo=FALSE, fig.width=6, fig.height=4, fig.cap=" "}
+library(ape)
+par(mfcol=c(1,2))
+plot(read.tree(text = "(((Species4, Species3), Species2), Species1);"), main = "no branch lengths")
+plot(read.tree(text = "(((Species4:0.1, Species3:0.1):0.3, Species2:0.4):1.9, Species1:2.3);"), main = "with branch lengths", use.edge.length = TRUE)
+```
+
+2. The tree has to be binary (strictly bifurcating = no polytomies, i.e. only two branches are coming from each node). Here is a simple example: 
+
+```{r tree exmaple2, eval=TRUE, echo=FALSE, fig.width=6, fig.height=4, fig.cap=" "}
+par(mfcol=c(1,2))
+plot(read.tree(text = "(((Species4, Species3), Species2), Species1);"), main = "binary")
+plot(read.tree(text = "((Species4, Species3, Species2), Species1);"), main = "non-binary")
+```
+
 3. The tree needs to be rooted (has a node representing the most recent common ancestor of all the species in the tree).   
+
+```{r tree exmaple3, eval=TRUE, echo=FALSE, fig.width=6, fig.height=4, fig.cap=" "}
+par(mfcol=c(1,2))
+plot(read.tree(text = "(((Species4, Species3), Species2), Species1);"), main = "rooted")
+plot(read.tree(text = "((Species4, Species3), Species2, Species1);"), main = "unrooted")
+```
+
 4. The tree tip labels (representing species) must match **exactly** with the species names in the data set (otherwise MA models will not run with them).  
+
+```{r tree exmaple4, eval=TRUE, echo=FALSE, fig.width=6, fig.height=4, fig.cap=" "}
+par(mfcol=c(1,1))
+plot(read.tree(text = "(((Species4 != SPECIES4, Species3 == Species3), Species2 == Species2), Species1 == Species1);"), main = "rooted")
+```
+
 5. Trees can be also made and used for higher taxonomic levels than species, e.g. genus-level (not covered in this tutorial, but general principles are the same).  
+
+```{r tree exmaple5, eval=TRUE, echo=FALSE, fig.width=6, fig.height=3.2, fig.cap=" "}
+par(mfcol=c(1,1))
+plot(read.tree(text = "((GenusC, GenusB), GenusA);"), main = "genus-level tree")
+```
 
 The general flow of tree-making work is shown in the diagram below.  
 You will usually start with species list from the meta-analytic data set (use binomial Latin names for the species list and in your database). First, check if there is any phylogenetic tree available that already contains all your species (e.g. a super-tree). Currently, the easiest way to build a custom phylogenetic tree usable for meta-analysis is by using an R package called *rotl*, which accesses a synthetic super-tree from Open Tree of Life database (https://opentree.wikispaces.com/). We will use this approach in our examples below. Most of the time *rotl* will work well, especially with the common species. There are other super-trees available, e.g. for birds - we will use one of these as our example too. Overall, if you can find a tree that contains all your species, you just trim (subset) it down to your species. If a few species is missing, it is sometimes possible to substitute them with closely related species. If no existing phylogeny is readily usable, there are a few non-exclusive options depending on the range of species in the data set:  
- - If the species are very diverged (e.g. mixture of vertebrates and invertebrates), use NCBI Taxonomy Common Tree tool (http://www.ncbi.nlm.nih.gov/Taxonomy/CommonTree/wwwcmt.cgi). At the webpage, use an input box at the top of the page to search each species name or upload list of the species names from a file. This allows to generate a scaffold for a tree.  
+ - If the species are very diverged (e.g. mixture of vertebrates and invertebrates), use NCBI Taxonomy Common Tree tool (http://www.ncbi.nlm.nih.gov/Taxonomy/CommonTree/wwwcmt.cgi). At the webpage, use an input box at the top of the page to search each species name or upload list of the species names from a file. This allows to generate a scaffold for a tree (i.e. the pattern of basal branching for the main clades).  
  - If few major clades are present, assemble together sub-trees created from bigger trees, if these exist for these clades.    
  - Use phyloGenerator (http://willpearse.github.io/phyloGenerator/) or other phylogenetic software to create phylogeny based on DNA sequences, if a shared sequence set exists for a given set of species (check if the resulting phylogeny makes sense).  
 
 If the resulting tree contains polytomies, these can be resolved at random, or based on information from more detailed trees (e.g. published phylogenies of specific lower taxa). You can also graft missing species on your tree. Be aware of species names problems: typos, scientific name synonyms, subspecies - have to be re-checked / corrected / substituted if generate errors at any stage. Again, your final tree, must contain exactly the same list of species names as your meta-analytic data set.   
+
+Run the below code chanks IF you have not installed these packages earlier (it may take 15-20 minutes to install all).   
 
 ```{r prepare, message = FALSE, echo = TRUE, eval = FALSE, warning = FALSE}
 install.packages("metafor")
@@ -259,7 +296,7 @@ dat <- metafor::dat.curtis1998
 str(dat) #102 rows, many columns including various data
 ```
 
-Extract and clean the list of species included. Note that genus and species name are stored in separate columns.  
+Extract and clean the list of species included. Note that genus and species name are stored in separate columns. Also, smae species name can appear several times in the data set, but since we need a species list, we need each name to apper only once (i.e. unique names), and capitalisation to be consistent (letter case matters when matching strings).   
 
 ```{r create Curtis1998 species list}
 species_Curtis1998 <- paste(dat$genus, dat$species, sep=" ") 
@@ -285,6 +322,8 @@ dim(taxa) #36 species
 If you display the names (taxa), note that some alternative names were found. We assume these are correct ones for now.  
 Now that the taxon names are matched to the Open Tree identifiers, we can pass them to the function tol_induced_subtree to retrieve the relationships among these taxa.  
 
+**Note:** populus deltoides  
+
 ```{r get Curtis1998 tree}
 tree <- tol_induced_subtree(ott_ids= taxa[["ott_id"]], label_format = "name") 
 #We get an error message that one OTT id was not found: [3915043].
@@ -292,12 +331,12 @@ taxa[taxa$ott_id==3915043,] #populus euramericana Populus x canadensis          
 #note: Populus × canadensis, known as Canadian poplar or Carolina poplar, is a naturally occurring hybrid of Populus nigra and Populus deltoides
 ```
 
-So, we run into a problem with one of the Populus names - need to fix this by using an alternative name.  
+So, we run into a problem with one of the Populus names - need to fix this by using an alternative name. Populus euramericana, is a naturally occurring hybrid of Populus deltoides, so we can replace it with this name for the search (given its colesely related and we dont have this species on our species list).      
 
 ```{r fix Curtis1998 species_Curtis1998 list}
-populus <- tnrs_match_names(names = ("populus deltoides"))
+populus <- tnrs_match_names(names = ("populus canadensis"))
 populus #looks ok
-species_Curtis1998 <- gsub("Populus euramericana", "Populus deltoides", species_Curtis1998) #replace populus euramericana with populus deltoides
+species_Curtis1998 <- gsub("Populus euramericana", "Populus deltoides", species_Curtis1998) #replace populus euramericana with populus canadensis
 ```
 
 Re-run *rotl* tree search.   
@@ -418,7 +457,7 @@ So, we will request specifically tree Tr418 from Study S342 (the one we already 
 
 ```{r dwonload one tree from treebase, results=FALSE}
 Acers_tree <- search_treebase("418", by="id.tree", exact_match = TRUE) #returns a single tree in a list
-Acers_tree <- Acers_tree[[1]] #extract tree from the list
+Acers_tree <- Acers_tree[[1]] #extract the tree from the list
 ```
 
 If downloading from R treebase did not work, upload tree saved in a file:
@@ -441,7 +480,7 @@ Acers4sp_tree <- drop.tip(Acers_tree, Acers_tree$tip.label[-match(Acer4sp, Acers
 
 Plot the pruned tree.  
 
-```{r plot pruned Acers_tree, fig.width=10, fig.height=4, echo=TRUE, message=FALSE}
+```{r plot pruned Acers_tree, fig.width=10, fig.height=3.2, echo=TRUE, message=FALSE}
 plot(Acers4sp_tree, cex=.8, label.offset =.1, no.margin = TRUE)
 ```
 
@@ -451,10 +490,22 @@ Final checks.
 ###check the overlap between species name from the data fila nad the tree file
 intersect(as.character(Acers4sp_tree$tip.label), Acer4sp) # all matching
 setdiff(Acer4sp, as.character(Acers4sp_tree$tip.label)) #no mismatches
-is.binary.tree(tree_random) #TRUE
+is.binary.tree(Acers4sp_tree) #TRUE
 ```
 
+We can graft this tree on the Curtis1998 tree to non-randomly resolve polytomy for genus Acer.   
+**Note:** when grafting you lose branch lengths on the original tree, if present.   
 
+We first need to prune given branch to remove all but one species affected by polytomy. Then we can replace this species with the resolved sub-tree (Acers4sp_tree):   
+
+```{r graft Acers_tree}
+tree_pruned <- drop.tip(tree, c("Acer saccharum", "Acer rubrum", "Acer saccharinum")) #prune 3 species
+tree_grafted <- bind.tree(tree_pruned, Acers4sp_tree, where=which(tree_pruned$tip.label=="Acer pensylvanicum")) #graft 3 species to the remaining Acer species
+```
+
+```{r plot tree_grafted Acers, fig.width=10, fig.height=8, echo=TRUE, message=FALSE}
+plot(tree_grafted, cex=.8, label.offset =.1, no.margin = TRUE)
+```
 
 ********************************************************************************
 
@@ -479,7 +530,7 @@ myspecies2 <- c("Gekko japonicus", "Geochelone sulcata", "Gopherus agassizii", "
 
 
 
-Use *treebase* to create a tree for the three Quercus species from dat.Curtis1998. 
+Use *treebase* to create a tree for the three Quercus species from dat.Curtis1998. You can try to graft them on the Curtis 1998 tree.
 
 **Hint**: Quercus prinus is also called Quercus montana (https://en.wikipedia.org/wiki/Quercus_montana).   
 Once you substitute, all three species can be found on Tree 113123 of Study 22057, and also in several other studies and trees.
