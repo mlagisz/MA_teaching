@@ -173,20 +173,20 @@ library(metaDigitise)
 library(tidyverse)
 ```
 
-Lets try to extract data from:
- 1. Figure 2a in the paper by Weil et al. 2006: Immune challenge retards seasonal reproductive regression in rodents: evidence for terminal investment (Weil2006.pdf)
- 2. Figure 2a in the paper by Sadd et al. 2006: Modulation of sexual signalling by immune challenged male mealworm beetles (Tenebrio molitor, L.): evidence for terminal investment and dishonesty (Sadd2006.pdf)
+Let's try to extract data from:   
+ 1. Figure 2a in the paper by Weil et al. 2006: Immune challenge retards seasonal reproductive regression in rodents: evidence for terminal investment (**Weil2006.pdf**)   
+ 2. Figure 2a in the paper by Sadd et al. 2006: Modulation of sexual signalling by immune challenged male mealworm beetles (Tenebrio molitor, L.): evidence for terminal investment and dishonesty (**Sadd2006.pdf**)   
 
-You will need to open the pdf files and take the snapshots of the relevant figures. Make sure you capture the axes and axes labels. Also, enlarge these figures to fill the screen before taking the snapshot to get higher resolution image.  
+You will need to open the pdf files and take the snapshots of the relevant figures. Make sure you capture the axes and axes labels. Also, enlarge these figures to fill the screen before taking the snapshot to get higher resolution image.   
 
-Name the files as following (this makes it easy to keep track of the figures being digitised):     
-001_Weil_2006_Fig2a.png    
+Name the snapshot files as following (this makes it easy to keep track of the figures being digitised):     
+**001_Weil_2006_Fig2a.png**    
 and    
-002_Sadd_2006_Fig2a.png   
+**002_Sadd_2006_Fig2a.png**   
 
-We need to place them in a new folder - we called it metaDigitise_figures (read more about organising your extraction directories in the "Setting up directory structures " section of https://cran.r-project.org/web/packages/metaDigitise/vignettes/metaDigitise.html).   
+You have to place them in a new folder - let's call it **metaDigitise_figures** (read more about organising your extraction directories in the "Setting up directory structures " section of https://cran.r-project.org/web/packages/metaDigitise/vignettes/metaDigitise.html).   
 
-To extract our two figures we need to provide the directory path name of the folder with the images to the metaDigise() function, for example:
+To extract our two figures we need to provide the directory path name of the folder with the images to the *metaDigise()* function, for example:
 
 ```{r path metadigitise, eval=FALSE, message = FALSE}
 data <- metaDigitise(dir = "~/Dropbox/Local_git_repos/MA_teaching/metaDigitise_figures/") #you will need to adjust this path for your folder
@@ -305,7 +305,7 @@ Is the sign of effect size important? Imagine we use d, which represents mean_tr
 
 
 **QUESTION 17:**    
-If we have different traits in the data set (lets say number of eggs laid and probability of next abandonment) what is the problem with the  signs of effect sizes for these traits? What should we do about this?   
+If we have different traits in the data set (lets say number of eggs laid and probability of nest abandonment) what is the problem with the signs of effect sizes for these traits? What should we do about this?   
 
 
 <br>
