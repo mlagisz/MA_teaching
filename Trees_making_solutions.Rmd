@@ -106,13 +106,28 @@ Quercuss_tree <- Quercuss_tree[[1]] #extract tree from the list
 
 # plot(Quercuss_tree, cex=.8, label.offset =.1, no.margin = TRUE) #a big tree of all sorts of trees - needs good trimming!
 Quercus3sp_tree <- drop.tip(Quercuss_tree, Quercuss_tree$tip.label[-match(Quercus3sp, Quercuss_tree$tip.label)])
-plot(Quercus3sp_tree, cex=.8, label.offset =.1, no.margin = TRUE)
+#plot(Quercus3sp_tree, cex=.8, label.offset =.1, no.margin = TRUE)
 
 #check the overlap between species name from the data fila nad the tree file
 intersect(as.character(Quercus3sp_tree$tip.label), Quercus3sp) # all matching, but we changed the species name in teh list, so it will no longer match the original dataset
 Quercus3sp_tree$tip.label <- gsub("montana", "prinus", Quercus3sp_tree$tip.label) #replace the tip label back with our species name
 Quercus3sp_tree$tip.label <- gsub("_"," ", Quercus3sp_tree$tip.label) #get rid of the underscores
+```
+
+```{r plot Quercus3sp_tree, fig.width=10, fig.height=3, echo=TRUE, message=FALSE}
 plot(Quercus3sp_tree, cex=.8, label.offset =.1, no.margin = TRUE)
+```
+
+We first need to prune given branch from the main tree to remove all but one species affected by polytomy. Then we can replace this species with the resolved sub-tree (Quercus3sp_tree):   
+
+```{r graft Quercus_tree}
+tree <- read.tree(file="tree_curtis1998.tre") #run if you need to read it in
+tree_pruned <- drop.tip(tree, c("Quercus prinus", "Quercus alba")) #prune 3 species
+tree_grafted <- bind.tree(tree_pruned, Quercus3sp_tree, where=which(tree_pruned$tip.label=="Quercus_rubra")) #graft 3 species to the remaining Acer species
+```
+
+```{r plot tree_grafted Acers, fig.width=10, fig.height=8, echo=TRUE, message=FALSE}
+plot(tree_grafted, cex=.8, label.offset =.1, no.margin = TRUE)
 ```
 
 Done!
