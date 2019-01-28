@@ -1,0 +1,146 @@
+---
+title: "Data_extractions_solutions"
+author: "ML"
+date: "28/01/2019"
+output: html_document
+---
+
+
+```{r setup, cache = F, echo=FALSE, results = FALSE}
+knitr::opts_chunk$set(error = TRUE) #allow some execution errors for demonstration purposes
+knitr::opts_chunk$set(eval = TRUE, echo = TRUE, warning = FALSE)
+sessionInfo()
+```
+
+# EXERCISE - DATA EXTRACTION AND ORGANISATION - SOLUTIONS
+
+Prepared by Malgorzata (Losia) Lagisz, BEES, UNSW, AU, losialagisz@gmail.com.   
+
+<br>
+********************************************************************************   
+
+###  Organising your data set   
+
+
+**ANSWER 1:**   
+Study ID (String of characters), effect size and its variance (if we want to run a simple weighted meta-analytic model; both numeric).  
+
+**ANSWER 2:**   
+ 1. More detailed information on each study: author, title, journal, publication year, e.g.:    
+
++---------------+---------------+-------------+-------------+-------------+   
+| StudyID       | Authors       | Title       | Journal     | Year        |   
++===============+===============+=============+=============+=============+   
+| Weil2006      |  Weil, Martin | Immune ...  | Biol Lett   | 2006        |   
++---------------+---------------+-------------+-------------+-------------+   
+| Sadd2006      | Sadd, Holman, | Modulation..| J Comp      | 2006        |   
++---------------+---------------+-------------+-------------+-------------+    
+
+ 2. Information on the study system or species (e.g. species name, taxonomic group, biological details relevant to the studied question).   
+
+ 3. Most papers will not report effect sizes but descriptive and test (inferential) statistics that need to be converted into effect sizes, we need to extract data from which effect sizes can be calculated. For Terminal Investment project, since we want to compare challenged and unchallenged groups, we will need to collect means and standard errors, sample sizes, or test statistic that can be converted into effect sizes. Since each data type needs its own column, that means several columns already, e.g.: mean_contr, SE_contr, SD_contr, N_contr, mean_treat, SE_treat, SD_treat, N_treat, test_stat_type, test_stat_value, df.  
+
+ 4. Information on where in the original paper the above data was extracted from, e.g. Figure/Table number, page, raw data; if multiple comparisons were reported in the original paper, which exact groups were compared.     
+ 
+5. Information on study methodology - e.g., where and when manipulations were performed and measurements/data collected.   
+
+6. Any comments and additional information related to the extracted data and study. You can have a comment/details column associated with every extracted data column and an overall comment column.   
+
+
+**ANSWER 3:**   
+Potentially, there can be a lot of information that could and should be extracted from the original papers and sometimes supplemented by information from other sources (databases, publications). Some of the information can be used as effect size moderators in the statistical models. Other information can be used to characterise the data set (e.g., is it dominated by particular taxon or experimental methodology?).   
+
+
+**ANSWER 4:**    
+ 1. Non-informative column names (which group should be nr 1 ?)   
+ 2. Second study has non-numerical values in the columns that should be numerical (NA is good for missing values, but should be used consistently)    
+ 3. Species column is a mix of Latin and common names (should be all Latin)   
+
+
+**ANSWER 5:**    
+CohortID is used to indicate that the same cohorts/group of animals, of different sex (F, M), were measured repeatedly at different ages (60 and 120). These are not independent data points, and this is captured by CohortID.   
+
+
+**ANSWER 6:**    
+CohortID is used to indicate that the same cohorts/group of animals were measured repeatedly for different traits (calls, mass) at different ages (60 and 120). These are not independent data points, and this is captured by CohortID.   
+
+
+**ANSWER 7:**    
+CohortID is used to indicate that the same cohorts/group of animals representing two species were measured once for different traits (calls, mass). We can also use combination of StudyID and Species columns to take this into account during statistical analyses.   
+
+
+**ANSWER 8:**    
+Control_grID is used to indicate that the same control group was used as a comparator to two different cohorts/group that were subject to different types of (could also be levels) of experimental treatment (virus, bacteria). It is clear from identical values of means and sample sizes for the control group but different ones for the treatment groups. The resulting effect sizes are not independent, but in a different way than if the same animals were measured for different traits or more than once for the same trait (rows 3 and 4). And this is captured by combination of CohortID and Control_grID and could be taken into account in statistical models.    
+
+
+**ANSWER 9:**    
+Meta-data is a detailed description of all extracted variables/columns and all other variables/columns derived from them. It is a part of the documentation of your meta-analysis and it is necessary when you or somebody else checks the data or tries to re-analyse or re-use it. It is a good practice to start creating such documentation when you start extractions and coding and update it as you make changes and progress to analyses.       
+
+
+<br>
+********************************************************************************   
+
+###  Extracting and coding
+
+
+**ANSWER 10:**    
+Ideally, two people would be extracting the data in parallel 9independently, in-duplicate), to minimise errors. However it is often not practical. In such case one person could be extracting and another person checking the extractions (there are always mistakes!).
+
+
+**ANSWER 11:**    
+It is often easier and quicker to group similar studies together, Especially grouping the studies by study/system and research group helps find overlapping studies (e.g. where the same experiment was reported in separate publications, but focusing on different aspects) or collect more details on how studies were done. Also leaving complicated and odd studies for later on might be a good idea.   
+
+
+**ANSWER 12:**    
+There are several pieces of software that helps digitising various types of plots and extracting the data (you can find a list here: https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13118), so it is often possible.  However, sometimes plot resolution can be too low, or data points / lines are overlapping and obscuring some of the values. In such case, you can try to contact the authors for the actual numbers or raw data used to make the plot.   
+
+
+
+<br>
+********************************************************************************   
+
+###  Converting different types of information   
+
+
+**ANSWER 13:**   
+Since we compare pairs of measurements for control and treatment groups, it is convenient to have these in the same row in the data frame.  
+
+
+**ANSWER 14:**   
+Would be good to merge these values back to the data frame.   
+
+```{r merge ES, eval=FALSE, message = FALSE}
+data_new <- bind_cols(data_new, SMD, ROM) #bind data
+data_new
+```
+
+
+**ANSWER 15:**  
+We usually give priority to descriptive statistics (mean, SE or SD), which usually represent raw data, unadjusted for other variables and also can be converted to different units or used to calculate alternative types of effect sizes.   
+
+
+**ANSWER 16:**   
+The sign represents direction of the effect on a given trait. d = 0.5 means that the trait value in the treatment group is moderately larger than the trait value in the control group, d = -0.5 would mean that the trait value in the treatment group is moderately smaller than the trait value in the control group.   
+
+
+**ANSWER 17:**   
+Larger numbers of eggs indicate increased reproductive effort (and thus reproductive investment), while increased probability to abandon the nest indicates reduced reproductive effort. This would translate to negative effect size sign if treatment group is less likely to abandon the nest. To fix this we need to reverse the sign of the effect sizes for traits where increased trait values represent LESS reproductive investment, so we have consistent biological interpretation over the whole data set.   
+
+
+<br>
+********************************************************************************   
+
+### Documentation and reporting
+
+
+**ANSWER 18:**   
+Items 10, 11 and 18
+
+
+**ANSWER 19:**   
+Generally speaking, it is for transparency, reproducibility and giving back to the community.   
+
+
+<br>
+
+*We hope it all makes sense - if not sure about some answers, please talk to us*       
