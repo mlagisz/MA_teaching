@@ -42,18 +42,20 @@ In this exercise you get some practice and tips on:
 ********************************************************************************  
 ### Introduction   
 
-Imagine, you woke up in the morning feeling rather sick. You decided to work from home to get some rest a get better more quickly. You don't not feel energetic enough to crunch numbers or write, so you thought you may catch up on scientific reading instead. You pick up the book sitting on top of the "to-read"" pile and open it at a random place. It happens to be **Ecoimmunology** (edited by Gregory Demas, Randy Nelson, Randy Joe Nelson, 2012) and it opens on the following fragment:
+Imagine, you woke up in the morning feeling rather sick. You decided to work from home to get some rest. You are not feeling energetic enough to crunch numbers or write, so you decide to catch up on scientific reading instead. You pick up the book sitting on top of the "to-read"" pile and open it at a random place. It happens to be **Ecoimmunology** (edited by Gregory Demas, Randy Nelson, Randy Joe Nelson, 2012) and it opens on the following fragment:
 
 ```{r TI_book_fragment, echo=FALSE, fig.cap=" ", out.width='50%'}
 knitr::include_graphics("./images/TI_book_fragment.png")
 ```
+**Note**: LPS is a lipopolysaccharide that is constituent of the outer membranes of some bacteria and it is commonly used to trigger immune reaction without causing greater harm in animals.   
+<br>
 
-You find it intriguing and start thinking this might be something (a topic) you could do a meta-analysis on.  *(Ok, this is a hypothetical example of coming up with the topic for a meta-analysis, but it sometimes happens - you read or hear some interesting questions and it sparks desire to put some numbers on some pattern...)*   
+You find this fragment intriguing and start thinking this might be something (a topic) you could do a meta-analysis on.  *(Ok, this is a hypothetical example of coming up with the topic for a meta-analysis, but it sometimes happens - you read or hear some interesting questions and it sparks desire to put some numbers on some pattern...)*   
 
 Let's use this hypothetical topic for the purpose of the exercise. We hope the topic is quite appealing and quiet easy to understand (we all get sick and most of us reproduce, or at least try to).
 
-In this exercise, we will use a few basic tools to illustrate how to perform the first few steps of meta-analysis: refining the question, searching and screening literature (these are the same steps as in Systematic Reviews, so the tools are the same and can be usually described as systematic literature/evidence reviewing tools).  
-Note that some R packages (and many other online/software tools) are available (and more always coming) that can help with some of the tasks during this exercise, but there is no single "perfect" tool for the whole process usable for all disciplines and types of questions (although some attempts have been made). We simply do not have enough time to introduce more tools and the main purpose of this exercise is to familiarize you with the basic principles/issues that apply when you use any tools. You can always try alternative tools in your own time.   
+In this exercise, we will use a few basic tools to illustrate how to perform the first few steps of a meta-analysis: refining the question, searching the literature, and screening the found studies (these are the same steps as in Systematic Reviews, so the tools are the same and can be usually described as systematic literature/evidence reviewing tools).  
+Note that some R packages (and many other online/software tools) are available (and more are bieng developed) that can help with some of the tasks during this exercise, but there is no single "perfect" tool for the whole process usable for all disciplines and types of questions (although some attempts have been made). We simply do not have enough time to introduce more tools and the main purpose of this exercise is to familiarize you with the basic principles/issues that apply when you use any tools. You can always try alternative tools in your own time.   
 
 **Note:** There will be some **QUESTIONS** to answer and **TASKS** to be performed, as well as **RESOURCES**      
 There is no *R* code to be run in this exercise.   
@@ -63,7 +65,7 @@ There is no *R* code to be run in this exercise.
 ********************************************************************************
 ###  Formulating the question for a meta-analysis  
 
-Topic is usually broad and vague area of interest, for a meta-analysis we need a much more concrete question.
+The topic is usually broad and vague area of interest, for a meta-analysis we need a much more concrete question.
 Generally, the more focused the question, the easier and quicker it is to perform the meta-analysis, but the answer becomes less general and there might be less evidence available.
 
 **QUESTION 0:**  
@@ -97,10 +99,10 @@ You can restrict the search to titles only using:
 *allintitle: "meta analytic" OR "meta analysis" "terminal investment"*   
 Now there are no matching hits; but there is no option for searching just in titles and abstracts.    
 
-Other things you should know about Google Scholar - its search interface is rather simplistic and restrictive, it shows only up to 1,000 results for any particular search query, ranking algorithms are obscured, its hard to export the references, the literature coverage may fluctuate (its based on web scraping) and the searches may not be reproducible. Because of this it is not really recommended for the main searches in systematic reviews. On the upside, it can be helpful for additional searches and finding grey literature (not published in peer-review journals).  
+Other things you should know about Google Scholar - its search interface is rather simplistic and restrictive, it shows only up to 1,000 results for any particular search query, ranking algorithms are obscured, its hard to export the references, the literature coverage may fluctuate (it is based on web scraping) and the searches may not be reproducible. Because of this it is not really recommended for the main searches in systematic reviews. On the upside, it can be helpful for additional searches and finding grey literature (not published in peer-review journals).  
 
 **RESOURCES:**   
-Other software useful for exploratory (scoping) ad additional searches (check them up later, also note that they may have similar disadvantages to these of Google Scholar):
+Other software useful for exploratory (scoping) and additional searches (check them out later, and note that they may have similar disadvantages to these of Google Scholar):
  * Semantic Scholar: https://www.semanticscholar.org/
  * Dimensions: https://www.dimensions.ai/
  * CiteHero: https://citehero.com/
@@ -108,7 +110,7 @@ Other software useful for exploratory (scoping) ad additional searches (check th
 **TASK 3:**   
 Run another Google Scholar quick search:  
 *"terminal investment" reproduction*   
-This time you should get around 1900 records. Note that Google Scholar does so called Automated Query Expansion for terms that are not set to be exact phrases (in quotes) - it uses alternative forms of these terms.  
+This time you should get around 1,900 records (you will be allowed to access only the first 1,000). Note that Google Scholar does so called Automated Query Expansion for terms that are not set to be exact phrases (in quotes) - it uses alternative forms of these terms.  
 
 **TASK 4:**   
 Try Google Scholar quick search:   
@@ -124,11 +126,11 @@ PICO stands for:
   * C = Comparison/Control group   
   * O = Outcome   
 
-Formulate meta-analytic question "whether immune challenge can result in terminal investment" using PICO terms (actually this fits really well because we can use experimental data).   
+Formulate our meta-analytic question "whether immune challenge can result in terminal investment" using PICO terms (actually this fits really well because we can use experimental data).   
 
 
 **RESOURCES:**   
-An extensive list of alternative systematic review formulation question frameworks here:  https://www.networks.nhs.uk/nhs-networks/nwas-library-and-information-service/documents/alternative-question-structures-for-different-types-of-systematic-review    )
+An extensive list of alternative systematic review formulation question frameworks can be found here:  https://www.networks.nhs.uk/nhs-networks/nwas-library-and-information-service/documents/alternative-question-structures-for-different-types-of-systematic-review    )
 
 
 **Note:** you should always be able to justify your question as important, relevant and timely. 
@@ -148,10 +150,10 @@ Time-span: should we include studies from any year?
 **QUESTION 5:**  
 Language: should we include studies published in any language?  
 
-**Note:** publication status can be also used as a criterium - are you happy to include some types of grey literature (e.g. conference proceedings, theses)?
+**Note:** publication status can be also used as a criterion - are you happy to include some types of grey literature (e.g. conference proceedings, theses)?
 
 **QUESTION 6:**  
-Study type: should we include any type of study?  
+Study type: should we include any type of study? (e.g. correlational vs experimental, if experimental what type of experiment?)    
 
 **QUESTION 7:**  
 Taxa: should we include any type of taxa?   
@@ -166,15 +168,17 @@ Control group: should we accept any type of control group?
 Outcome type: should we accept any reproduction-related measurements and what that means?   
 
 **QUESTION 11:**  
-Data type: should we accept any type of data for meta-analysis?   
+Data type: should we accept any type of data for meta-analysis? (e.g. descriptive statistics, and which ones, or also inferential model statsistics, and which ones? This will be linked to the effect size you are planning to use!)    
+
 <br>
 
 
 ********************************************************************************
-### Making decision trees   
+### Making decision trees for the literature screening    
 
-Good decision trees make screening the literature faster and more reliable.  
-Briefly, if the initial (most general) questions, representing screening criteria, are not fulfilled, the study gets excluded and there is no need to evaluate the remaining criteria, so we save some time.  
+**Note**: this part could be introduced later with the screening, but its closely linked to the inclusion criteria, so it comes here.    
+
+Decision trees are visual representations of our inclusion criteria and decisions we have to make when screening literature. Importantly, good decision trees can make screening the literature faster and more reliable. Briefly, if the initial (most general) questions representing screening criteria are not fulfilled, the study gets excluded and there is no need to evaluate the remaining criteria, so we save some time.    
 
 **QUESTION 12:**  
 How many stages there are during literature screening process?   
@@ -275,14 +279,14 @@ text(arrpos[10, 1] + 0.05, arrpos[10, 2] + 0.03, "yes")
 
 **QUESTION 15:**  
 What question is missing on the top of the full-text decision tree?   
-(Tip: its not about the Language or publication year)   
+(Tip: what happens between abstract and full text screening?)  
 <br>
 
      
 ********************************************************************************
 ###  Performing searches for relevant literature  
 
-Normally, we attempt to do a fairly comprehensive literature search (a full systematic review). The reason is that we want to have as many relevant data points as possible to increase the power of statistical analyses. The other reason is that we make effort to capture obscure studies that potentially are more likely to report non-significant results, and this way we actively try to reduce publication bias in our data set. Search strategy should include using at least two wide-coverage/interdisciplinary databases (we recommend Scopus and Web of Science), and a few additional sources of literature such as forward and backward reference searching (looking at cited and citing papers), publication lists of the key authors or labs, searching for unpublished studies and data sets (we will not cover these here).   
+Normally, we attempt to do a fairly comprehensive literature search (a full systematic review). The reason is that we want to have as many relevant data points as possible to increase the power of statistical analyses. The other reason is that we make effort to capture obscure studies that potentially are more likely to report non-significant results, and ttherefore help reduce publication bias in our data set. Search strategy should include using at least two wide-coverage/interdisciplinary databases (we recommend Scopus and Web of Science), and a few additional sources of literature such as forward and backward reference searching (looking at cited and citing papers), publication lists of the key authors or labs, searching for unpublished studies and data sets (we will not cover these here).   
 
 In this exercise we only do a bit of the core search using 2 databases:
 Scopus and Web of Science.
@@ -290,10 +294,10 @@ Scopus and Web of Science.
 **RESOURCES:** 
 Scopus: https://www.scopus.com/   
 Web of Science (WoS): http://apps.webofknowledge.com   
-**Note:** WoS coverage depends of institutional subscription package purchased, so results of searches can vary among institutions. Also searching just core collection vs. all available databases can make a difference.     
+**Note:** WoS coverage depends on the institutional subscription package purchased, so results of searches can vary among institutions. Also searching just core collection vs. all available databases can make a difference.     
 
 **TASK 5:**   
-Using Scopus **Advanced Search** (you can read more about the syntax here: https://dev.elsevier.com/tips/ScopusSearchTips.htm) run this search strings:  
+Using Scopus **Advanced Search** (you can read more about the syntax here: https://dev.elsevier.com/tips/ScopusSearchTips.htm) run these search strings:  
  1. *TITLE-ABS-KEY ( "terminal investment"  AND  "immune challenge" )*    
 (approx. 14 hits - search terms too restrictive)   
  2. *TITLE-ABS-KEY ( ( "terminal investment"  OR  "reproductive effort" )  AND  ( "immune challeng\*"  OR  "immunochalleng\*" ) )  *
@@ -303,16 +307,22 @@ Using Scopus **Advanced Search** (you can read more about the syntax here: https
  4. *( TITLE-ABS-KEY ( ( "terminal investment"  OR  "reproductive effort" )  AND  ( "immune challeng\*"  OR  "immunochalleng\*"  OR  "infect\*" ) )  AND NOT  TITLE-ABS-KEY ( load  OR  human  OR  people ) )* 
 (approx. 144 hits - by adding a group of exclusion terms (AND NOT) we probably got rid of some irrelevant ones).  
 
-Ideally, we should think and test some more terms for inclusion, after doing some scoping searches, reading reviews and sentinel relevant empirical papers. We stop for now and assume that the string above is our final search string. Note that Scopus Advanced Search stores all your searches ans search strings in a neat table at the bottom of the search window - its easy to copy this out and include in the documentation on how you developed your search strategy (same applies to WoS database; you need to register in Scopus and WoS to save searches and alerts across multiple search sessions). The \* symbol stands for wildcard and indicates "any symbols" since these databases do not do Automatic Query Expansion.    
+Ideally, we should think and test some more terms for inclusion, after doing some scoping searches, reading reviews and seminal relevant empirical papers. Also, it is important to validate the search by checking how many papers it finds that we know contain useable data. You should also do some pilot abstract screening on papers exported from just one database, to check whether there’s some exclusion words you did not think about, and which could be included in your search string as exclusion terms.   
+
+We stop for now and assume that the string above is our final search string. Note that Scopus Advanced Search stores all your searches and search strings in a neat table at the bottom of the search window - its easy to copy this out and include in the documentation on how you developed your search strategy (same applies to WoS database; you need to register in Scopus and WoS to save searches and alerts across multiple search sessions). The \* symbol stands for wildcard and indicates "any symbols" since these databases do not do Automatic Query Expansion.    
 
 **TASK 6:**    
 We can easily translate our final search string from Scopus into Web of Science (WoS) **Advanced Search** (you can read more about the syntax here: https://images.webofknowledge.com/images/help/WOS/hs_search_operators.html). Run this search string:    
 *TS = (( ( "terminal investment" OR "reproductive effort" ) AND ( "immune challeng\*"  OR  "immunochalleng\*"  OR  "infect\*"  ) ) NOT ( load OR human OR people ) )*  
-(approx. 249 hits - more than from Scopus).   WoS stores your search history and also which sub-data bases were included in the search: Indexes=SCI-EXPANDED, SSCI, A&HCI, CPCI-S, CPCI-SSH, BKCI-S, BKCI-SSH, ESCI, CCR-EXPANDED, IC Timespan=All years" (you can restrict these in Advanced Search)
+(approx. 249 hits - more than from Scopus).   WoS stores your search history and also which sub-data bases were included in the search: Indexes=SCI-EXPANDED, SSCI, A&HCI, CPCI-S, CPCI-SSH, BKCI-S, BKCI-SSH, ESCI, CCR-EXPANDED, IC Timespan=All years" (you can restrict these in the Advanced Search).   
 
-Both Scopus and WoS allow exporting the found records (with limitations on the max. number per export, **remember to tick the boxes for exporting abstracts!**) - there are multiple file formats you can use, but .ris and .bib are most commonly used ones- you will need to figure out which ones work for your reference manager software. The next step would be downloading all found records from your "final" search into reference manager of your choice. Combine the references from two databases into a single project/folder and removing duplicates (most reference managers have such function, but it never works perfectly - do a visual check after sorting by titles!) before proceeding to screening stage. An R package *revtools* (https://cran.rstudio.com/web/packages/revtools/ and http://revtools.net/) can act as a reference manager and also has a good de-dupiction function.      
+```{r WoS_adv_search, echo=FALSE, fig.cap=" ", out.width='100%'}
+knitr::include_graphics("./images/WoS_adv_search.png")
+```
 
-**Note:** It is also a good time to write up your meta-analysis protocol and preregistering your meta-analysis (e.g. on OSF)!
+Both Scopus and WoS allow exporting the found records (with limitations on the max. number per export, **remember to tick the boxes for exporting abstracts!**) - there are multiple file formats you can use, but .ris and .bib are most commonly used ones- you will need to figure out which ones work for your reference manager software. The next step would be downloading all found records from your "final" search into the reference manager of your choice. Combine the references from two databases into a single project/folder and remove duplicates (most reference managers have this function, but it never works perfectly - do a visual check after sorting by titles!) before proceeding to the reference screening stage. An R package *revtools* (https://cran.rstudio.com/web/packages/revtools/ and http://revtools.net/) can act as a reference manager and also has a good de-dupiction function.      
+
+**Note:** This is also a good time to write up your meta-analysis protocol and register your meta-analysis (e.g. on OSF)!
 <br>
 
 
@@ -325,48 +335,49 @@ Theoretically you could do screening in the database browser or your reference m
 Rayyan: https://rayyan.qcri.org/welcome (free, you can use it in the web browser or as a phone app; for more details see: http://libraryguides.mcgill.ca/rayyan/home)  
 Abstrackr:  http://abstrackr.cebm.brown.edu/account/login (another free tool)
 
-**Note:* it is possible to deduplication algorithms in these are not very good, so its advisable to deduplicate and check your records in the reference manager before uploading to the screening software.    
+**Note:** it is possible that the deduplication algorithms in these are not very good, so it is advisable to deduplicate and check your records in the reference manager before uploading to the screening software.    
 
 
 **TASK 7:**  
-We prepared a file (*Scopus10.ris*) with 10 references sampled from the set found using search string (these are sets of references from *( ( "terminal investment"  OR  "reproductive effort" )  AND  ( "immune challeng\*"  OR  "immunochalleng\*" ) )  *) in Scopus (same references came up in the equivalent search in WoS).    
+We prepared a file (*Scopus10.ris*) with 10 references sampled from the set found using the search string in Scopus database (used *( ( "terminal investment"  OR  "reproductive effort" )  AND  ( "immune challeng\*"  OR  "immunochalleng\*" ) )  *) (same references came up in the equivalent search in WoS).    
 
-**Note:** Sometimes the biblio-files with the same extension differ a bit in structure and reference managers (and Rayyan) may have problem opening them. Getting your files into exactly right format can sometimes be frustrating.   
+**Note:** Sometimes the biblio-files with the same extension differ a bit in structure and reference managers, and Rayyan may have problem opening them. Getting your files into exactly the right format can sometimes be frustrating.   
 
-We will use these ten references to practice title and abstract screening in Rayyan. Screening can be also done in Abstracker, but we found Rayyan bit more reliable and more user-friendly.   
+We will use these ten references to practice title and abstract screening in Rayyan. Screening can be also done in Abstracker, but we find Rayyan a bit more reliable and more user-friendly (could be slow with updating the display).   
+
 If you are working in pairs or small groups, one person should create a new project in Rayyan (see below) and invite another person/people to the project using their email address.  
 
  1. Open Rayyan (we assume you already created a free account) and log in.    
  2. My Reviews -> New REVIEW...   
  3. Enter project title, e.g. "Terminal Investment"" and description, e.g. "test"."   
  4. Select files -> upload *Scopus10.ris* and press Continue.     
-It may take several minutes for larger files and slower connections, but eventually the uploaded references should appear in the left panel under "Search methods" (you can upload more files with references via "Add new" link). Click on the "Uploaded References [scopus10.ris]" link in this panel to see the references in the right panel. Generally clicking on the links within panels on the left will filter the records in the right panels to include on highlighted sets (filtering, to get rid of the filter click on it again to remove highlighting).  
+It may take several minutes for larger files and slower connections, but eventually the uploaded references should appear in the left panel under "Search methods" (you can upload more files with references via "Add new" link). Click on the "Uploaded References [scopus10.ris]" link in this panel to see the references in the right panel. Generally clicking on the links within panels on the left will filter the records in the right panels to include only highlighted sets (to get rid of the filter click on it again to remove highlighting).  
 In the left panels there are several sub-panels.  
  5. In the "Keywords for include"" you can add (via "Add new" link) following terms (or at least a few of these): challenge, challenged, injected, injection, infected, infection, PHA, SRBC, vaccine (these terms will be highlighted green in the titles and abstracts to help them find more easily; Rayyan tries to populate this list by itself - but its algorithm is medical-centered so you should adjust this list for your projects).   
- 6. "Keywords for exclude" - " set to: review, reviewed, model, human, people, women, men (these terms will be highlighted red in the titles and abstracts to help them find more easily; Rayyan tries to populate this list by itself - but its algorithm is medical-centered so you should adjust this list for your projects).    
- 7. Click on "All reviews" button in the top right corner to go to the project lists, then open your=project again by choosing it from the list. A view with a pie chart (your screening progress) and a few buttons will appear. If you need to invite other people to do screening in parallel with you, do that by clicking on the "Invite" button. Stick with "Collaborator" selection and enter the email and message (e.g. "help me!"). Open your project again - you should see your collaborators added with some info on their work so far. Press on "Show" button to see the references view.  
+ 6. "Keywords for exclude" - " set to: review, reviewed, model, human, people, women, men (these terms will be highlighted red in the titles and abstracts to help them find more easily; again, Rayyan tries to populate this list by itself).    
+ 7. Click on "All reviews" button in the top right corner to go to the project lists, then open your project again by choosing it from the list. A view with a pie chart (your screening progress) and a few buttons will appear. If you need to invite other people to do screening in parallel with you, do that by clicking on the "Invite" button. Stick with "Collaborator" selection and enter the email and message (e.g. "help me!"). Open your project again - you should see your collaborators added with some info on their work so far. Press on "Show" button to see the references view.  
  8. Click on the first review from the top - an abstract and other record info will appear in the bottom panel.  
- 9. Using pour abstract screening decision tree decide whether include this paper for the next stage of screening and press "Include" or "Exclude" button accordingly. And do the assessment for the remaining records. As you go you can create and assign new labels to individual records, e.g.: "unsure/check". You could also enter reasons for exclusion, e.g. "human" (we normally don't do this as there are often hundreds or thousands excluded records per project at this stage).  
-10. Go to "All reviews" and check if other people finished their screening, if applicable. After that you can lift the "blind" mode, export all the records with decisions into a .csv files. For collaborative screens Rayyan will now provide filters to display all consensus included, consensus excluded and records with conflicting decisions. If you have any "conflicts" have a look again and discuss why you couldn't agree on a given record , come to agreement and make final decision. Export the records with final consensus decisions, for documentation.   
+ 9. Using our abstract screening decision tree decide whether include this paper for the next stage of screening and press the "Include" or "Exclude" button accordingly. And do the assessment for the remaining records. As you go you can create and assign new labels to individual records, e.g.: "unsure/check". You could also enter reasons for exclusion, e.g. "human" (we normally don't do this as there are often hundreds or thousands of excluded records per project at this stage).  
+10. Go to "All reviews" and check if other people finished their screening, if applicable. After that you can lift the "blind" mode (when colleborators cannot see each others decisions). For collaborative screens Rayyan will now provide filters to display all consensus included, consensus excluded and records with conflicting decisions. If you have any "conflicts" have a look again and discuss why you couldn't agree on a given record , come to agreement and make final decision. Export the records with final consensus decisions, for documentation, into a .csv file. You can filter the records into “Included” and just export those, also you can export them as a .bib or .ris file into a reference manager where you will collect full texts for the enxt stage of the screening.   
 
 
 **QUESTION 16:** 
-How many papers you excluded? How many conflicts you got if you collaboratively screened (and if so what was causing these conflicts, can the decision tree be improved?)
+How many papers did you exclude? How many conflicts did you have, if you collaboratively screened and, if so, what was causing these conflicts? Can the decision tree be improved and how?   
 
 
 **TASK 8:**  
-Its time to do the full-text screening for the papers that passed title and abstract screening. There are some full-text papers that passed the initial screening in the directory - assess Nielsen2012 and Ardia2005 using our full-text screening decision tree. Hint: dont read the whole paper - just try to skim it and look for the key information.      
+It is time to do the full-text screening for the papers that passed title and abstract screening. There are some full-text papers that passed the initial screening in the directory - assess **Nielsen2012** and **Ardia2005** using our full-text screening decision tree. Hint: do not read the whole paper - just try to skim it and look for the key information.      
 
 **QUESTION 17:**  
-What was your decision about Nielsen2012 and Ardia2005 papers?   
+What was your decision about **Nielsen2012** and **Ardia2005** papers?   
 <br>
 
 
 ********************************************************************************
 ###  PRISMA and other documentation  
 
-It is very important to keep detailed record of the whole searching, screening and data extraction process. Searching and screening are usually represented as some variant of PRISMA diagram.
-With our 144 records from Scopus, 249 from WoS (these two databases are our "main search"), and imaginary around 400 records from other searches we might have done if we had more time, we would probably end up with something like this one:    
+It is very important to keep detailed record of the whole searching, screening and data extraction process. Searching and screening are usually represented as some variant of a PRISMA diagram.
+With our 144 records from Scopus, 249 from WoS (these two databases are our "main search"), and imaginary around 400 records from other searches of other sources of literature we might have done if we had more time, we would probably end up with something like this one:    
 
 
 ```{r diagram decision tree PRISMA, fig.width=10, fig.height=6, echo=FALSE, message=FALSE}
@@ -415,7 +426,7 @@ textellipse (mid = elpos[26,]+ c(0.05,0), radx = 0.06, rady = 0.02, lwd = 1, lab
 #put numbers on exclusion arrows
 text(elpos[19, 1] - 0.07, elpos[19, 2] + 0.02, "260")
 text(elpos[26, 1] - 0.07, elpos[26, 2] + 0.02, "15")
-text(elpos[19, 1] + 0.12, elpos[19, 2] + 0.12, "approx.380")
+text(elpos[19, 1] + 0.12, elpos[19, 2] + 0.12, "approx.385")
 text(elpos[26, 1] + 0.14, elpos[26, 2] + 0.02, "6")
 text(elpos[29, 1] + 0.02, elpos[29, 2] + 0.06, "35")
 text(elpos[30, 1] + 0, elpos[30, 2] - 0.02, "4")
@@ -428,16 +439,16 @@ text(elpos[30, 1] + 0, elpos[30, 2] - 0.02, "4")
 How many papers in total were excluded during the full-text screening?   
 
 
-**Note:** When you exclude records in the full-text screen keep record for each individual paper on the main reason for exclusion. Later present this information as a supplementary table for your meta-analyses. (Table of included studies should go in the main text, if possible).    
+**Note:** When you exclude records in the full-text screen keep a record for each individual paper on the main reason for exclusion. Later present this information as a supplementary table for your meta-analyses. (Table of included studies should go in the main text, if possible).    
 
 **QUESTION 19:**  
 Above you can see a PRISMA (flow) diagram. The other important document(s) associated with PRISMA is a checklist (http://prisma-statement.org/documents/PRISMA%202009%20checklist.pdf). 
-PRISMA checklist is a document that helps making sure that you reported the key information how a systematic review (including meta-analysis) was done.    
-Have a look at the PRISMA checklist. Find and read the items that are related to what we have covered in this exercise. What are the numbers (in the # column) of these items?   
+The PRISMA checklist is a document that helps ensure you reported the key information on how a systematic review (including meta-analysis) was done.    
+Have a look at the PRISMA checklist. Find and read the items that are related to what we have covered in this exercise. What are their item numbers (in the # column)?   
 
-**Note:** this PRISMA was designed for meedical systematic reviews, and some items are not very relevant or useful. Also, it is due to be updated.   
+**Note:** this PRISMA was designed for medical systematic reviews, and some items are not very relevant or useful. Also, it is due to be updated.   
 <br>
 
 
-*We hope you enjoyed this exercise! Remeber, we just roughly covered the basics and there is much more to learn!*       
+*We hope you enjoyed this exercise! Remember, we just roughly covered the basics and there is much more to learn!*       
 
