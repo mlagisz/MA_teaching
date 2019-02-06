@@ -27,7 +27,7 @@ This kind of non-independence can be represented as a correlation matrix of phyl
 To create a relatedness matrix among species we need a phylogenetic tree for the list of species from our data set.  
 
 A few things to note:  
-1. We can use a tree with or without branch lengths (divergence measures).  
+1. We can use a tree with or without branch lengths (divergence measures) although we do need branch lengths for analysis (often making certain assumptions).  
 
 ```{r tree exmaple1, eval=TRUE, echo=FALSE, fig.width=6, fig.height=4, fig.cap=" "}
 library(ape)
@@ -67,14 +67,14 @@ plot(read.tree(text = "((GenusC, GenusB), GenusA);"), main = "genus-level tree")
 ```
 
 The general flow of tree-making work is shown in the diagram below.  
-You will usually start with species list from the meta-analytic data set (use binomial Latin names for the species list and in your database). First, check if there is any phylogenetic tree available that already contains all your species (e.g. a super-tree). Currently, the easiest way to build a custom phylogenetic tree usable for meta-analysis is by using an R package called *rotl*, which accesses a synthetic super-tree from Open Tree of Life database (https://opentree.wikispaces.com/). We will use this approach in our examples below. Most of the time *rotl* will work well, especially with the common species. There are other super-trees available, e.g. for birds - we will use one of these as our example too. Overall, if you can find a tree that contains all your species, you just trim (subset) it down to your species. If a few species is missing, it is sometimes possible to substitute them with closely related species. If no existing phylogeny is readily usable, there are a few non-exclusive options depending on the range of species in the data set:  
+You will usually start with species list from the meta-analytic data set (use binomial Latin names for the species list and in your database). First, check if there is any phylogenetic tree available that already contains all your species (e.g. a super-tree). Currently, the easiest way to build a custom phylogenetic tree usable for meta-analysis is by using an R package called *rotl*, which accesses a synthetic super-tree from Open Tree of Life database (https://	opentreeoflife.org). We will use this approach in our examples below. Most of the time *rotl* will work well, especially with the common species. There are other super-trees available, e.g. for birds - we will use one of these as our example too. Overall, if you can find a tree that contains all your species, you just trim (subset) it down to your species. If a few species is missing, it is sometimes possible to substitute them with closely related species. If no existing phylogeny is readily usable, there are a few non-exclusive options depending on the range of species in the data set:  
  - If the species are very diverged (e.g. mixture of vertebrates and invertebrates), use NCBI Taxonomy Common Tree tool (http://www.ncbi.nlm.nih.gov/Taxonomy/CommonTree/wwwcmt.cgi). At the webpage, use an input box at the top of the page to search each species name or upload list of the species names from a file. This allows to generate a scaffold for a tree (i.e. the pattern of basal branching for the main clades).  
  - If few major clades are present, assemble together sub-trees created from bigger trees, if these exist for these clades.    
  - Use phyloGenerator (http://willpearse.github.io/phyloGenerator/) or other phylogenetic software to create phylogeny based on DNA sequences, if a shared sequence set exists for a given set of species (check if the resulting phylogeny makes sense).  
 
 If the resulting tree contains polytomies, these can be resolved at random, or based on information from more detailed trees (e.g. published phylogenies of specific lower taxa). You can also graft missing species on your tree. Be aware of species names problems: typos, scientific name synonyms, subspecies - have to be re-checked / corrected / substituted if generate errors at any stage. Again, your final tree, must contain exactly the same list of species names as your meta-analytic data set.   
 
-Run the below code chanks IF you have not installed these packages earlier (it may take 15-20 minutes to install all).   
+Run the below code chunks IF you have not installed these packages earlier (it may take 15-20 minutes to install all).   
 
 ```{r prepare, message = FALSE, echo = TRUE, eval = FALSE, warning = FALSE}
 install.packages("metafor")
@@ -145,7 +145,7 @@ Now, we start from installing (as required) and loading R packages we will use.
 
 
 We will try to create a simple tree using 10 commonly used taxa (lab model species) from across the tree of life.  
-Rotl is an R package (https://peerj.com/preprints/1471/) allowing us to access synthetic phylogenetic tree available at Open Tree of Life database (https://opentree.wikispaces.com/).   
+Rotl is an R package (https://peerj.com/preprints/1471/) allowing us to access synthetic phylogenetic tree available at Open Tree of Life database (https://	opentreeoflife.org/).   
 
 **Important**: use Latin names, not common names.   
 **Notes**: *rotl* crashes on some species lists. Also, Open Tree of Life database gets constantly updated with new info, so you can get different outputs at different time-points.   
@@ -200,7 +200,7 @@ The tree is returned as an ape::phylo object and it can be manipulated, printed 
 plot(tree, cex=.8, label.offset =.1, no.margin = TRUE)
 ```
 
-Note that the species names have the Open Tree identifiers appended to them and *E.coli* was replaced with "mrcaott616ott617", which is non-taxon node within Bacteria. Given we dont have any other bacteria in the data set, and the position on the tree is correct, that's fine, we just need to rename the tree tip back to "Escherichia coli". 
+Note that the species names have the Open Tree identifiers appended to them and *E.coli* was replaced with "mrcaott616ott617", which is non-taxon node within Bacteria. Given we don't have any other bacteria in the data set, and the position on the tree is correct, that's fine, we just need to rename the tree tip back to "Escherichia coli". 
 
 ```{r rotl 10species names}
 tree$tip.label #see the current tree tip labels
@@ -296,7 +296,7 @@ dat <- metafor::dat.curtis1998
 str(dat) #102 rows, many columns including various data
 ```
 
-Extract and clean the list of species included. Note that genus and species name are stored in separate columns. Also, smae species name can appear several times in the data set, but since we need a species list, we need each name to apper only once (i.e. unique names), and capitalisation to be consistent (letter case matters when matching strings).   
+Extract and clean the list of species included. Note that genus and species name are stored in separate columns. Also, same species name can appear several times in the data set, but since we need a species list, we need each name to appear only once (i.e. unique names), and capitalisation to be consistent (letter case matters when matching strings).   
 
 ```{r create Curtis1998 species list}
 species_Curtis1998 <- paste(dat$genus, dat$species, sep=" ") 
@@ -331,7 +331,7 @@ taxa[taxa$ott_id==3915043,] #populus euramericana Populus x canadensis          
 #note: Populus × canadensis, known as Canadian poplar or Carolina poplar, is a naturally occurring hybrid of Populus nigra and Populus deltoides
 ```
 
-So, we run into a problem with one of the Populus names - need to fix this by using an alternative name. Populus euramericana, is a naturally occurring hybrid of Populus deltoides, so we can replace it with this name for the search (given its colesely related and we dont have this species on our species list).      
+So, we run into a problem with one of the Populus names - need to fix this by using an alternative name. Populus euramericana, is a naturally occurring hybrid of Populus deltoides, so we can replace it with this name for the search (given its closely related and we don't have this species on our species list).      
 
 ```{r fix Curtis1998 species_Curtis1998 list}
 populus <- tnrs_match_names(names = ("populus canadensis"))
