@@ -52,14 +52,14 @@ Potentially, there can be a lot of information that could and should be extracte
 
 
 **ANSWER 4:**    
- 1. Non-informative column names (which group should be nr 1 ?)   
+ 1. Non-informative column names (which group should be N 1 ?)  and column names should be one string (word) 
  2. Second study has non-numerical values in the columns that should be numerical (NA is good for missing values, but should be used consistently)    
  3. Species column is a mix of Latin and common names (should be all Latin)   
  4. There is an extra dot in " 6.4      .""
 
 
 **ANSWER 5:**    
-CohortID is used to indicate that the same cohorts/group of animals, of different sex (F, M), were measured repeatedly at different ages (60 and 120). These are not independent data points, and this is captured by CohortID. For different study question this could be an unique identifier of various study sites or populations that need tp be distinguished within and between studies.      
+CohortID is used to indicate that the same cohorts/group of animals, of different sex (F, M), were measured repeatedly at different ages (60 and 120). These are not independent data points, and this is captured by CohortID. For different study question this could be an unique identifier of various study sites or populations that need to be distinguished within and between studies.      
 
 
 **ANSWER 6:**    
@@ -75,7 +75,7 @@ Control_grID is used to indicate that the same control group was used as a compa
 
 
 **ANSWER 9:**    
-Meta-data is a detailed description of all extracted variables/columns and all other variables/columns derived from them. More specifically it describes how the data was coded (e.g. the measurement units, how conversions were made, any decisions and assumptions that had to be made in general for a given column of data"; e.g. whether sex was coded as "F" and "M" and "B", and what these values mean, jhow missing values were coded, and anything else that would allow you or somebody to extract and code the same data). Meta-data is an essential part of the documentation of your meta-analysis and it is extremely useful when you or somebody else checks the data or tries to re-analyse or re-use it. It is a good practice to start creating such documentation when you start extractions and coding and update it as you make changes and progress to analyses.       
+Meta-data is a detailed description of all extracted variables/columns and all other variables/columns derived from them. More specifically it describes how the data was coded (e.g. the measurement units, how conversions were made, any decisions and assumptions that had to be made in general for a given column of data"; e.g. whether sex was coded as "F" and "M" and "B", and what these values mean, how missing values were coded, and anything else that would allow you or somebody to extract and code the same data). Meta-data is an essential part of the documentation of your meta-analysis and it is extremely useful when you or somebody else checks the data or tries to re-analyse or re-use it. It is a good practice to start creating such documentation when you start extractions and coding and update it as you make changes and progress to analyses.       
 
 
 <br>
