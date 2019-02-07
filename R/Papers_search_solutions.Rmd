@@ -71,7 +71,7 @@ Control group (unmanipulated) should consist of similar individuals, as far as r
 What is reproduction-related trait will depend on the species studied (may require additional reading or relying on the assertions of the authors). Different taxa will have different suites of reproduction related-traits, but these can be grouped into broader categories (e.g. mate attraction includes vocal signals, visual ornaments, pheromone production etc.; reproductive fitness will include number and quality of offspring) and different specific measurements will be available for different taxa and in different studies - this can be quite messy. If we do not have many studies on the topic and very specific question (e.g. "is the number of offspring affected?"") it is OK to be inclusive and later on try to figure out whether some traits are affected more than others.  
 
 **ANSWER 11:**   
-It depends on the effect size we are planning to use. In our project it can be Cohen's d (Hedges g) or lnRR, which are typically calculated from mean, SD or SE and N (sample sizes). However, Cohen's d (Hedges g) can be also inferred from some of the test statistics, or even proportions, if means and other descriptive statistics are not available. But one cannot get lnRR from inhferential statistics. Other considerations include what to do if some data is missing or unclear.   
+It depends on the effect size we are planning to use. In our project it can be Cohen's *d* (Hedges *g*) or *lnRR*, which are typically calculated from mean, SD or SE and N (sample sizes). However, Cohen's *d* (Hedges *g*) can be also inferred from some of the test statistics, or even proportions, if means and other descriptive statistics are not available. But one cannot get *lnRR* from inhferential statistics. Other considerations include what to do if some data is missing or unclear.   
 
 **ANSWER 12:**   
 The screening of literature is usually done in two stages:   
@@ -91,16 +91,18 @@ It is often not explicitly stated, but without the full text it is impossible to
 It is a good practice to keep this in mind and use as one of your potential inclusion/exclusion criteria.   
 
 **ANSWER 16:**   
-We think 4 should have been excluded: Simmons2009 and Clancy2013 as human studies, Gershman2010 and Gonzales-Tokman2013 as not likely to have any reproduction-related measurements.   
+We think 4 should have been excluded:    
+**Simmons2009** and **Clancy2013** as human studies, but    
+**Gershman2010** and **Gonzales-Tokman2013** as not likely to have any reproduction-related measurements.   
 
 **ANSWER 17:**    
-Nielsen2012 - include, Ardia2005 - exclude due to the lack of good control group.  
+**Nielsen2012** - include, **Ardia2005** - exclude due to the lack of good control group.  
 
 **ANSWER 18:**    
-15 + 6 = 21   (from the PRISMA diagram)
+15 + 6 = 21   (from the PRISMA diagram)    
 
 **ANSWER 19:**    
-Items: 3 to 9, 17   
+Items: 3 to 9, 17    
 
 
 <br>
