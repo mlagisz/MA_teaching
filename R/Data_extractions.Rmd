@@ -177,7 +177,7 @@ library(tidyverse)
 library(compute.es)
 ```
 
-Let's try to extract data from:   
+Let's try to extract data from (all pdf files are located in the "pdf" sub-folder):   
  1. Figure 2a in the paper by Weil et al. 2006: Immune challenge retards seasonal reproductive regression in rodents: evidence for terminal investment (**Weil2006.pdf**)   
  2. Figure 2a in the paper by Sadd et al. 2006: Modulation of sexual signalling by immune challenged male mealworm beetles (*Tenebrio molitor*, L.): evidence for terminal investment and dishonesty (**Sadd2006.pdf**)   
 
@@ -225,7 +225,7 @@ data
 You can add more figures in the directory and add more data to this data table later, or save it and load back later to continue adding more data or merge with other data frames (see "Re-importing previously digitised data and accessing raw data" in the *metaDigitise* tutorial at https://cran.r-project.org/web/packages/metaDigitise/vignettes/metaDigitise.html).   
  
 ```{r save metadigitise, eval=FALSE, message = FALSE}
-write.csv(data, file = "filename.csv")
+write.csv(data, file = "filename.csv") #adjust the file name and path as needed
 ```
 
 
@@ -280,12 +280,12 @@ What should you do next?
 
 <br>
 
-With these two papers we just extracted, we had a relatively easy job. There were descriptive statistics values reported in the plots. If we cannot get means and standard errors (or SD) from the text, tables and figures (or already-calculated effect sizes, which is still rare), we can look for test (inferential) statistics. Test statistics that are usable include t-values form t-tests, F-values, Chi-square values, and p-values. These values from simple statistical tests (like independent or paired t-tests) are easily convertible into SMD (d, g) or r (correlation coefficient). These conversions and some others can be calculated in R if you know the formulas (including conversion from SMD to correlation coefficient), but for the exercise purpose we will use this web-based Practical Meta-Analysis Effect Size Calculator:   
+With these two papers we just extracted, we had a relatively easy job. There were descriptive statistics values reported in the plots. If we cannot get means and standard errors (or SD) from the text, tables and figures (or already-calculated effect sizes, which is still rare), we can look for test (inferential) statistics. Test statistics that are usable include t-values form t-tests, F-values, Chi-square values, and p-values. These values from simple statistical tests (like independent or paired t-tests) are easily convertible into SMD (*d*, *g*) or r (correlation coefficient). These conversions and some others can be calculated in R if you know the formulas (including conversion from SMD to correlation coefficient), but for the exercise purpose we will use this web-based Practical Meta-Analysis Effect Size Calculator:   
 https://www.campbellcollaboration.org/research-resources/research-for-resources/effect-size-calculator.html   
 
 
 ```{r webEScalcualtor, echo=FALSE, fig.cap=" ", out.width='100%'}
-knitr::include_graphics("./images/webEScalcualtor.png")
+knitr::include_graphics("../images/webEScalcualtor.png")
 ```
 
 Open the above webpage. The main menu has an expandable list of types of effect sizes, and statistical tests you can use to calculate these effect sizes (only *d*, *r*, *OR* and *RR*).   
@@ -298,7 +298,7 @@ Use the web-based effect size calculator sheet selecting "Standarized Mean diffe
 You should get *d* for the testes  mass that is close to what we calculated for tests volume from Fig2a. Note that this web calculator provides confidence intervals (CI) and variance for the calculated effect sizes.
 
 **TASK 5**:   
-Using the web-based effect size calculator, estimate a few other effect sizes using test (inferential) statistics reported in Sadd2006.   
+Using the web-based effect size calculator, estimate a few other effect sizes using test (inferential) statistics reported in **Sadd2006.pdf**.   
 
 In practice, we would prefer to do this in R, rather than in an online app or any other non-scriptable software that cannot document our calculations. Luckily, the R package *compute.es* allows us to not only compute various effect sizes from descriptive statistics, but also from inferential statistics.   
 
@@ -319,6 +319,7 @@ The *compute.es* function inputs and names are as follows:
  * Proportions (binary): "propes()"    
  * p-value: "pes()""    
  * t-test: "tes()""    
+ 
 To learn more see the package vignette or https://www.rdocumentation.org/packages/compute.es/versions/0.2-4/topics/compute.es-package    
 
 As an example, we will use the F-value from **TASK 4**. Note that functions from the *compute.es* packages automatically calculate all available effect sizes for the given input and if you run it on a data frame it will generate a new data.frame with several effect size estimates. Try:   
