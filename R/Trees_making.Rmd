@@ -248,8 +248,8 @@ Here we will use on of these super-trees called "Ericson backbone", which is dow
 We have our custom list of bird species stored in a file *bird_list.csv* as a simple string factor and we have downloaded Ercison tree stored in a file *Ericson.tre*, in Newick format with branch lengths included. Load these files and check the species overlap.    
 
 ```{r list birds load} 
-birds <- unique(read.csv("bird_list.csv")$species_name) #load our list of bird species and make the names unique
-birds_stree <- read.tree("Ericson.tre") #load bird supertree
+birds <- unique(read.csv("../data/bird_list.csv")$species_name) #load our list of bird species and make the names unique
+birds_stree <- read.tree("../data/Ericson.tre") #load bird supertree
 birds_stree #9993 tips = species
 # str(birds_stree) # ypu can see this tree has edge (branch) lengths
 
@@ -373,8 +373,8 @@ tree$tip.label <- gsub("Fuscospora fusca", "Nothofagus fusca", tree$tip.label) #
 setdiff(species_Curtis1998, as.character(tree$tip.label)) #0 mismatches 
 setdiff(as.character(tree$tip.label), species_Curtis1998) #0 mismatches
 
-write.tree(tree, file="tree_curtis1998.tre") #save the tree in Newick format, if needed
-# read.tree(file="tree_curtis1998.tre") #if you need to read it
+# write.tree(tree, file="../data/tree_curtis1998.tre") #save the tree in Newick format, if needed
+# read.tree(file="../data/tree_curtis1998.tre") #if you need to read it
 ```
 
 Check if our tree is binary (you can see in the plot that there are a few polytomies).
@@ -382,8 +382,8 @@ Check if our tree is binary (you can see in the plot that there are a few polyto
 ```{r check Curtis1998 tree binary}
 is.binary.tree(tree) #FALSE (i.e. there are polytomies)
 # is.ultrametric(tree) #the tree has no branch lengths, so cant be checked
-write.tree(tree, file="tree_curtis1998.tre") #save the tree
-# tree <- read.tree(file="tree_curtis1998.tre") #if you need to read it
+#write.tree(tree, file="../data/tree_curtis1998.tre") #save the tree
+# tree <- read.tree(file="../data/tree_curtis1998.tre") #if you need to read it
 ```
 
 Its not binary -  polytomies are present within genera: Acer, Betula, Quercus and Fraxinus.
@@ -393,8 +393,8 @@ We will resolve them at random.
 set.seed(111) #making it replicable
 tree_random <- multi2di(tree,random=TRUE)
 is.binary.tree(tree_random) #TRUE
-write.tree(tree_random, file="tree_curtis1998_random.tre") #save the tree
-# tree_random <- read.tree(file="tree_curtis1998_random.tre") #if you need to read it
+#write.tree(tree_random, file="../data/tree_curtis1998_random.tre") #save the tree
+# tree_random <- read.tree(file="../data/tree_curtis1998_random.tre") #if you need to read it
 ```
 
 Plot the tree now - with randomly resolved polytomies.   
@@ -464,7 +464,7 @@ Acers_tree <- Acers_tree[[1]] #extract the tree from the list
 
 If downloading from R treebase did not work, upload tree saved in a file:
 ```{r dwonload one tree from file, eval = FALSE}
-Acers_tree <- read.nexus(file = "T418.nex") #read Nexus tree file
+Acers_tree <- read.nexus(file = "../data/T418.nex") #read Nexus tree file
 ```
 
 Plot the Acers tree from Treebase - looks good.     
