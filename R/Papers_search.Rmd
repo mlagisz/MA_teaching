@@ -45,7 +45,7 @@ In this exercise you get some practice and tips on:
 Imagine, you woke up in the morning feeling rather sick. You decided to work from home to get some rest. You are not feeling energetic enough to crunch numbers or write, so you decide to catch up on scientific reading instead. You pick up the book sitting on top of the "to-read"" pile and open it at a random place. It happens to be **Ecoimmunology** (edited by Gregory Demas, Randy Nelson, Randy Joe Nelson, 2012) and it opens on the following fragment:
 
 ```{r TI_book_fragment, echo=FALSE, fig.cap=" ", out.width='50%'}
-knitr::include_graphics("./images/TI_book_fragment.png")
+knitr::include_graphics("../images/TI_book_fragment.png")
 ```
 **Note**: LPS is a lipopolysaccharide that is constituent of the outer membranes of some bacteria and it is commonly used to trigger immune reaction without causing greater harm in animals.   
 <br>
@@ -75,7 +75,7 @@ What is your initial feeling about the meta-analytic question that can be derive
 **QUESTION 1:**  
 What are at least 2 ways of improving this initial question to make it more amenable for a meta-analysis?
 
-These question refinements are leading us gently into deciding which studies to use in a meta-analysis. However, before we move onto inclusion criteria, it is wise to gather more intelligence (Unless you are already an expert on the topic).
+These question refinements are leading us gently into deciding which studies to use in a meta-analysis. However, before we move onto inclusion criteria, it is wise to gather more intelligence (unless you are already an expert on the topic).
 
 **QUESTION 2:**  
 What should we do now?    
@@ -317,7 +317,7 @@ We can easily translate our final search string from Scopus into Web of Science 
 (approx. 249 hits - more than from Scopus).   WoS stores your search history and also which sub-data bases were included in the search: Indexes=SCI-EXPANDED, SSCI, A&HCI, CPCI-S, CPCI-SSH, BKCI-S, BKCI-SSH, ESCI, CCR-EXPANDED, IC Timespan=All years" (you can restrict these in the Advanced Search).   
 
 ```{r WoS_adv_search, echo=FALSE, fig.cap=" ", out.width='100%'}
-knitr::include_graphics("./images/WoS_adv_search.png")
+knitr::include_graphics("../images/WoS_adv_search.png")
 ```
 
 Both Scopus and WoS allow exporting the found records (with limitations on the max. number per export, **remember to tick the boxes for exporting abstracts!**) - there are multiple file formats you can use, but .ris and .bib are most commonly used ones- you will need to figure out which ones work for your reference manager software. The next step would be downloading all found records from your "final" search into the reference manager of your choice. Combine the references from two databases into a single project/folder and remove duplicates (most reference managers have this function, but it never works perfectly - do a visual check after sorting by titles!) before proceeding to the reference screening stage. An R package *revtools* (https://cran.rstudio.com/web/packages/revtools/ and http://revtools.net/) can act as a reference manager and also has a good de-dupiction function.      
@@ -350,10 +350,10 @@ If you are working in pairs or small groups, one person should create a new proj
  1. Open Rayyan (we assume you already created a free account) and log in.    
  2. My Reviews -> New REVIEW...   
  3. Enter project title, e.g. "Terminal Investment"" and description, e.g. "test"."   
- 4. Select files -> upload *Scopus10.ris* and press Continue.     
+ 4. Select files -> upload *Scopus10.ris* from the *data* sub-folder and press Continue.     
 It may take several minutes for larger files and slower connections, but eventually the uploaded references should appear in the left panel under "Search methods" (you can upload more files with references via "Add new" link). Click on the "Uploaded References [scopus10.ris]" link in this panel to see the references in the right panel. Generally clicking on the links within panels on the left will filter the records in the right panels to include only highlighted sets (to get rid of the filter click on it again to remove highlighting).  
 In the left panels there are several sub-panels.  
- 5. In the "Keywords for include"" you can add (via "Add new" link) following terms (or at least a few of these): challenge, challenged, injected, injection, infected, infection, PHA, SRBC, vaccine (these terms will be highlighted green in the titles and abstracts to help them find more easily; Rayyan tries to populate this list by itself - but its algorithm is medical-centered so you should adjust this list for your projects).   
+ 5. In the "Keywords for include" you can add (via "Add new" link) following terms (or at least a few of these): challenge, challenged, injected, injection, infected, infection, PHA, SRBC, vaccine (these terms will be highlighted green in the titles and abstracts to help them find more easily; Rayyan tries to populate this list by itself - but its algorithm is medical-centered so you should adjust this list for your projects).   
  6. "Keywords for exclude" - " set to: review, reviewed, model, human, people, women, men (these terms will be highlighted red in the titles and abstracts to help them find more easily; again, Rayyan tries to populate this list by itself).    
  7. Click on "All reviews" button in the top right corner to go to the project lists, then open your project again by choosing it from the list. A view with a pie chart (your screening progress) and a few buttons will appear. If you need to invite other people to do screening in parallel with you, do that by clicking on the "Invite" button. Stick with "Collaborator" selection and enter the email and message (e.g. "help me!"). Open your project again - you should see your collaborators added with some info on their work so far. Press on "Show" button to see the references view.  
  8. Click on the first review from the top - an abstract and other record info will appear in the bottom panel.  
@@ -366,7 +366,7 @@ How many papers did you exclude? How many conflicts did you have, if you collabo
 
 
 **TASK 8:**  
-It is time to do the full-text screening for the papers that passed title and abstract screening. There are some full-text papers that passed the initial screening in the directory - assess **Nielsen2012** and **Ardia2005** using our full-text screening decision tree. Hint: do not read the whole paper - just try to skim it and look for the key information.      
+It is time to do the full-text screening for the papers that passed title and abstract screening. There are some full-text papers that passed the initial screening in the directory - assess **Nielsen2012** and **Ardia2005** (they are in "pdf" sub-folder) using our full-text screening decision tree. (Tip: do not read the whole paper - just try to skim it and look for the key information.)      
 
 **QUESTION 17:**  
 What was your decision about **Nielsen2012** and **Ardia2005** papers?   
