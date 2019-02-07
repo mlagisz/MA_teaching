@@ -89,7 +89,7 @@ Ideally, two people would be extracting the data in parallel (independently, in-
 
 
 **ANSWER 11:**    
-It is often easier and quicker to group similar studies together, Especially grouping the studies by study/system and research group helps find overlapping studies (e.g. where the same experiment was reported in separate publications, but focusing on different aspects) or collect more details on how studies were done. Also leaving complicated and odd studies for later on might be a good idea.   
+It is often easier and quicker to group similar studies together. Especially, grouping the studies by study/system and research group helps find overlapping studies (e.g. where the same experiment was reported in separate publications, but focusing on different aspects) or collect more details on how studies were done. Also leaving complicated and odd studies for later on might be a good idea.   
 
 
 **ANSWER 12:**    
@@ -121,7 +121,7 @@ We usually give priority to descriptive statistics (mean, SE or SD), which usual
 
 
 **ANSWER 16:**   
-The sign represents direction of the effect on a given trait. d = 0.5 means that the trait value in the treatment group is moderately larger than the trait value in the control group, d = -0.5 would mean that the trait value in the treatment group is moderately smaller than the trait value in the control group.   
+The sign represents direction of the effect on a given trait. *d* = 0.5 means that the trait value in the treatment group is moderately larger than the trait value in the control group, *d* = -0.5 would mean that the trait value in the treatment group is moderately smaller than the trait value in the control group.   
 
 
 **ANSWER 17:**   
