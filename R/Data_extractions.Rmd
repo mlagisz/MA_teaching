@@ -168,6 +168,8 @@ Here is the package installation code (run if you have not installed it earlier)
 install.packages("devtools")
 devtools::install_github("daniel1noble/metaDigitise")
 #install.packages("metaDigitise")
+#install.packages("tidyverse") #in case you have not installed this earlier
+#install.packages("compute.es") #in case you have not installed this earlier
 ```
 
 Load the packages we will need:   
@@ -292,7 +294,7 @@ Open the above webpage. The main menu has an expandable list of types of effect 
 
 
 **TASK 4**:   
-Weil 2006 reports in the results: "At the end of the experiment saline-injected animals had smaller testes (F 1,27 = 4.6875, p<0.05, figure 2b)" and in the methods it is noted these are calculated using ANOVA.
+Weil (2006) reports in the results: "At the end of the experiment saline-injected animals had smaller testes (F 1,27 = 4.6875, p<0.05, figure 2b)" and in the methods it is noted these are calculated using ANOVA.
 Use the web-based effect size calculator sheet selecting "Standarized Mean difference (d)" and "F-test, 2 groups" to calculate *d* from one-way ANOVA (you will need F-value and sample sizes of treatment and control groups).   
 
 You should get *d* for the testes  mass that is close to what we calculated for tests volume from Fig2a. Note that this web calculator provides confidence intervals (CI) and variance for the calculated effect sizes.

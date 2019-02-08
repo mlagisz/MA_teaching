@@ -488,12 +488,13 @@ We will practice data extraction on few of the Terminal investment papers. We wi
 <p>Here is the package installation code (run if you have not installed it earlier):</p>
 <pre class="r"><code>install.packages(&quot;devtools&quot;)
 devtools::install_github(&quot;daniel1noble/metaDigitise&quot;)
-#install.packages(&quot;metaDigitise&quot;)</code></pre>
+#install.packages(&quot;metaDigitise&quot;)
+#install.packages(&quot;tidyverse&quot;) #in case you have not installed this earlier
+#install.packages(&quot;compute.es&quot;) #in case you have not installed this earlier</code></pre>
 <p>Load the packages we will need:</p>
 <pre class="r"><code>library(metaDigitise)
 library(tidyverse)
 library(compute.es)</code></pre>
-<pre><code>## Error in library(compute.es): there is no package called 'compute.es'</code></pre>
 <p>Let’s try to extract data from (all pdf files are located in the “pdf” sub-folder):<br />
 1. Figure 2a in the paper by Weil et al. 2006: Immune challenge retards seasonal reproductive regression in rodents: evidence for terminal investment (<strong>Weil2006.pdf</strong>)<br />
 2. Figure 2a in the paper by Sadd et al. 2006: Modulation of sexual signalling by immune challenged male mealworm beetles (<em>Tenebrio molitor</em>, L.): evidence for terminal investment and dishonesty (<strong>Sadd2006.pdf</strong>)</p>
@@ -556,7 +557,7 @@ What should you do next?</p>
 </div>
 <p>Open the above webpage. The main menu has an expandable list of types of effect sizes, and statistical tests you can use to calculate these effect sizes (only <em>d</em>, <em>r</em>, <em>OR</em> and <em>RR</em>).</p>
 <p><strong>TASK 4</strong>:<br />
-Weil 2006 reports in the results: “At the end of the experiment saline-injected animals had smaller testes (F 1,27 = 4.6875, p&lt;0.05, figure 2b)” and in the methods it is noted these are calculated using ANOVA. Use the web-based effect size calculator sheet selecting “Standarized Mean difference (d)” and “F-test, 2 groups” to calculate <em>d</em> from one-way ANOVA (you will need F-value and sample sizes of treatment and control groups).</p>
+Weil (2006) reports in the results: “At the end of the experiment saline-injected animals had smaller testes (F 1,27 = 4.6875, p&lt;0.05, figure 2b)” and in the methods it is noted these are calculated using ANOVA. Use the web-based effect size calculator sheet selecting “Standarized Mean difference (d)” and “F-test, 2 groups” to calculate <em>d</em> from one-way ANOVA (you will need F-value and sample sizes of treatment and control groups).</p>
 <p>You should get <em>d</em> for the testes mass that is close to what we calculated for tests volume from Fig2a. Note that this web calculator provides confidence intervals (CI) and variance for the calculated effect sizes.</p>
 <p><strong>TASK 5</strong>:<br />
 Using the web-based effect size calculator, estimate a few other effect sizes using test (inferential) statistics reported in <strong>Sadd2006.pdf</strong>.</p>
@@ -582,12 +583,122 @@ Using the web-based effect size calculator, estimate a few other effect sizes us
 <p>As an example, we will use the F-value from <strong>TASK 4</strong>. Note that functions from the <em>compute.es</em> packages automatically calculate all available effect sizes for the given input and if you run it on a data frame it will generate a new data.frame with several effect size estimates. Try:</p>
 <pre class="r"><code>#single calculation:
 a.fes(f = 4.6875, n.1 = 28, n.2 = 10, R = 0, q = 0) #where we enter F-value, sample sizes of treatment and control group, covariate correlation and number of covariates (we have none in ANOVA))</code></pre>
-<pre><code>## Error in a.fes(f = 4.6875, n.1 = 28, n.2 = 10, R = 0, q = 0): could not find function &quot;a.fes&quot;</code></pre>
+<pre><code>## Mean Differences ES: 
+##  
+##  d [ 95 %CI] = 0.8 [ 0.03 , 1.57 ] 
+##   var(d) = 0.14 
+##   p-value(d) = 0.04 
+##   U3(d) = 78.74 % 
+##   CLES(d) = 71.36 % 
+##   Cliff's Delta = 0.43 
+##  
+##  g [ 95 %CI] = 0.78 [ 0.03 , 1.53 ] 
+##   var(g) = 0.14 
+##   p-value(g) = 0.04 
+##   U3(g) = 78.26 % 
+##   CLES(g) = 70.96 % 
+##  
+##  Correlation ES: 
+##  
+##  r [ 95 %CI] = 0.33 [ 0 , 0.6 ] 
+##   var(r) = 0.02 
+##   p-value(r) = 0.05 
+##  
+##  z [ 95 %CI] = 0.34 [ 0 , 0.69 ] 
+##   var(z) = 0.03 
+##   p-value(z) = 0.05 
+##  
+##  Odds Ratio ES: 
+##  
+##  OR [ 95 %CI] = 4.25 [ 1.05 , 17.17 ] 
+##   p-value(OR) = 0.04 
+##  
+##  Log OR [ 95 %CI] = 1.45 [ 0.05 , 2.84 ] 
+##   var(lOR) = 0.47 
+##   p-value(Log OR) = 0.04 
+##  
+##  Other: 
+##  
+##  NNT = 3.54 
+##  Total N = 38</code></pre>
 <pre class="r"><code>#for vectors of values (like in a data frame):
 results_ES &lt;- a.fes(f = c(4.6875, 4.6875), n.1 = c(28, 10), n.2 = c(10, 10), R = c(0, 0), q = c(0, 0))</code></pre>
-<pre><code>## Error in a.fes(f = c(4.6875, 4.6875), n.1 = c(28, 10), n.2 = c(10, 10), : could not find function &quot;a.fes&quot;</code></pre>
+<pre><code>## Mean Differences ES: 
+##  
+##  d [ 95 %CI] = 0.8 0.97 [ 0.03 -0.02 , 1.57 1.96 ] 
+##   var(d) = 0.14 0.22 
+##   p-value(d) = 0.04 0.06 
+##   U3(d) = 78.74 83.35 % 
+##   CLES(d) = 71.36 75.32 % 
+##   Cliff's Delta = 0.43 0.51 
+##  
+##  g [ 95 %CI] = 0.78 0.93 [ 0.03 -0.02 , 1.53 1.88 ] 
+##   var(g) = 0.14 0.2 
+##   p-value(g) = 0.04 0.06 
+##   U3(g) = 78.26 82.31 % 
+##   CLES(g) = 70.96 74.4 % 
+##  
+##  Correlation ES: 
+##  
+##  r [ 95 %CI] = 0.33 0.44 [ 0 -0.04 , 0.6 0.75 ] 
+##   var(r) = 0.02 0.03 
+##   p-value(r) = 0.05 0.07 
+##  
+##  z [ 95 %CI] = 0.34 0.47 [ 0 -0.04 , 0.69 0.98 ] 
+##   var(z) = 0.03 0.06 
+##   p-value(z) = 0.05 0.07 
+##  
+##  Odds Ratio ES: 
+##  
+##  OR [ 95 %CI] = 4.25 5.79 [ 1.05 0.96 , 17.17 35.07 ] 
+##   p-value(OR) = 0.04 0.06 
+##  
+##  Log OR [ 95 %CI] = 1.45 1.76 [ 0.05 -0.05 , 2.84 3.56 ] 
+##   var(lOR) = 0.47 0.74 
+##   p-value(Log OR) = 0.04 0.06 
+##  
+##  Other: 
+##  
+##  NNT = 3.54 2.85 
+##  Total N = 38 20</code></pre>
 <pre class="r"><code>str(results_ES)</code></pre>
-<pre><code>## Error in str(results_ES): object 'results_ES' not found</code></pre>
+<pre><code>## 'data.frame':    2 obs. of  36 variables:
+##  $ N.total : num  38 20
+##  $ n.1     : num  28 10
+##  $ n.2     : num  10 10
+##  $ d       : num  0.8 0.97
+##  $ var.d   : num  0.14 0.22
+##  $ l.d     : num  0.03 -0.02
+##  $ u.d     : num  1.57 1.96
+##  $ U3.d    : num  78.7 83.3
+##  $ cl.d    : num  71.4 75.3
+##  $ cliffs.d: num  0.43 0.51
+##  $ pval.d  : num  0.04 0.06
+##  $ g       : num  0.78 0.93
+##  $ var.g   : num  0.14 0.2
+##  $ l.g     : num  0.03 -0.02
+##  $ u.g     : num  1.53 1.88
+##  $ U3.g    : num  78.3 82.3
+##  $ cl.g    : num  71 74.4
+##  $ pval.g  : num  0.04 0.06
+##  $ r       : num  0.33 0.44
+##  $ var.r   : num  0.02 0.03
+##  $ l.r     : num  0 -0.04
+##  $ u.r     : num  0.6 0.75
+##  $ pval.r  : num  0.05 0.07
+##  $ fisher.z: num  0.34 0.47
+##  $ var.z   : num  0.03 0.06
+##  $ l.z     : num  0 -0.04
+##  $ u.z     : num  0.69 0.98
+##  $ OR      : num  4.25 5.79
+##  $ l.or    : num  1.05 0.96
+##  $ u.or    : num  17.2 35.1
+##  $ pval.or : num  0.04 0.06
+##  $ lOR     : num  1.45 1.76
+##  $ l.lor   : num  0.05 -0.05
+##  $ u.lor   : num  2.84 3.56
+##  $ pval.lor: num  0.04 0.06
+##  $ NNT     : num  3.54 2.85</code></pre>
 <p><br><br />
 <strong>QUESTION 15:</strong><br />
 If both descriptive statistics (mean, SE or SD) and test (inferential) statistics are reported, which one should we extract from a paper?</p>
