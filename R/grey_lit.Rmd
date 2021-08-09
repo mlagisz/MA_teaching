@@ -1,0 +1,84 @@
+---
+title: "grey_lit"
+author: "ML"
+date: "1/24/2019"
+output: html_document
+---
+
+```{r setup, cache = F, echo=FALSE, results = FALSE}
+knitr::opts_chunk$set(error = TRUE) #allow some execution errors for demonstration purposes
+knitr::opts_chunk$set(eval = TRUE, echo = TRUE, warning = FALSE)
+sessionInfo()
+```
+
+# A FEW WORDS ABOUT GREY LITERATURE
+
+Prepared by Malgorzata (Losia) Lagisz, BEES, UNSW, AU, losialagisz@gmail.com   
+
+  
+********************************************************************************
+
+### What "grey literature" is?   
+
+The officel definiton from the Cochrane Handbook for Systematic Reviews of Interventions is:   
+*"...literature that is not formally published in sources such as books or journal articles."*    
+
+So, effectively, everything else that has been written could be classfied as grey literature (including this text). 
+Obviously, for a meta-analysis we are only interested in research-related literature, and more specfically literature related to a given meta-analystic topic. 
+But, this still includes a lot: graduate dissertations, conference abstracts and proceedings, research reports, blogs, news stories...  (for the full list see http://www.greynet.org/greysourceindex/documenttypes.html).  
+
+Notably, peer-review is not a defining feature of grey literature - some of the literature types mentioned above can be peer-reviewed, for example MsC and PhD theses, some of the reports.   
+
+*Note:* most grey literature-related guidelines are written for medical sciences, thsi one is tailored for ecology and evolution, so I have skipped less relevant items...   
+
+
+********************************************************************************
+
+### What "grey literature" is NOT?   
+
+ * It is not the same as books and academic journal papers that are published in languages other than English.   
+ * It is not equivalent to the papers published in obscure journals, not indexed in the main databases.   
+ * It is not equivalent to old jouranl papers and books (pre-digital era) that are less likely to have proper electronic records and be indexed online.  
+
+
+********************************************************************************
+
+### Why we need to include grey literature?  
+
+We want to include data from grey literature in our meta-analyses in order to reduce publication bias... (studies with small or non significant effects being more liely to remain unpublished).  We cannot completely get rid of publication bias, since we can never be sure that we actually collected all available data that is relevant, but we can do our best to include as much unpublished data as possible in a reasonable timeframe.    
+
+********************************************************************************
+
+### What to search for?  
+
+As just noted above, we need to do it in reasonable time (weeks, months). So the best strategy is to focus on the sources of grey literature that have the highest probability of reporting actual data we are after, also it needs to be reported with sufficient level of detail. The best and quite reliable source of such data is from graduate dissertations. Doctoral and master theses are more likely than actual papers based on them (if ever published) to provide detailed descriptions of the methods and results, including non-significant ones.  We should also broaden the definition of grey literature to include unpublished data (including meta-data), since we this is our effective target. It also implies additional ways for searching.    
+
+********************************************************************************
+
+### How to search for grey literture?    
+
+Databases of mixed-type grey-literature:   
+ * OpenGrey (Grey Literature in Europe): http://www.opengrey.eu/   
+ * Trove (Australian; apart of theses it hes other types of grey literature - you have to search for theses from the Books -> Australian content category!) : https://trove.nla.gov.au/   
+ * Informit: https://search.informit.com.au/    
+   
+Databases (including databases aggregation services) of graduate dissertations:   
+ * ProQuest Dissertation & Theses Global (PQDT Global): http://www.proquest.com/products-services/cpi-set-c.html  
+ * WorldCatDissertations: http://www.worldcat.org   
+ * BSCO Open Dissertations: https://www.ebsco.com/products/research-databases/ebsco-open-dissertations   
+ 
+Databases (including databases aggregation services) of datasets:  
+ * Google Data Search: https://toolbox.google.com/datasetsearch   
+ * Elsevier Data Search: https://datasearch.elsevier.com/#/  
+ * Mendeley Data: https://data.mendeley.com/   
+
+Full list of web-based resources in grey literature is available here: http://www.greynet.org/greysourceindex.html.    
+
+Note that many of the above resources only use a simple basic search query, so run your searches using kjust the key phrases for your topic.   
+
+Using genrealistic search engines:  
+ * Google / Google Scholar (note, it includes grey literature and can search in full texts). Our searches are usually Google Personalized Searching since 2009 - our search resulst are influenced by stored search histories and influenced by geographical locations. Try using country-specific version of Google. You can also limit the search to pages from a given country (under the Web tab) or Google Advance Search with Region Limit (other helpful limit: file type PDF).   
+ * DuckDuckGo: https://duckduckgo.com . Search results are not personalized.   
+ * Startpage: https://startpage.com . Searches via Google, but with privacy settings not allowing to store pervious search histories.   
+ 
+ Last, but not least, contact the key research labs and people working on the given topic and ask thatm for any unpublished data thay may have (or published papers that you jave missed in your earlier searches).
